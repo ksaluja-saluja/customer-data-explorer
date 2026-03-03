@@ -28,9 +28,11 @@ export class CustomerRepository {
     const totalResponse = await this.rdsCient.send(totalCommand);
     const totalCustomers = totalResponse.records && totalResponse.records[0][0].longValue ? totalResponse.records[0][0].longValue : 0;
 
+    /* Assuming customer_id is an auto-incrementing primary key, we can use it for pagination.
+    If not, we may need to adjust the query to use a different column for ordering and pagination */
     const query = `SELECT customer_id, full_name, email, registration_date
       FROM customers
-      ORDER BY registration_date
+      ORDER BY customer_id
       LIMIT :max OFFSET :start`
 
     const command = new ExecuteStatementCommand({

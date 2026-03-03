@@ -1,6 +1,16 @@
 import { APIGatewayProxyEvent, Context } from "aws-lambda";
 import { ResponseUtil } from "./utilities/response";
-import { Customer } from "./models/Customer";
+import { CustomerRepository } from "./repositories/customerRepository";
+import { CustomerPage } from "./models/Customer";
+
+let customerRepository: CustomerRepository | null = null;
+
+export const getRepository = (): CustomerRepository => {
+  if (!customerRepository) {
+    customerRepository = new CustomerRepository();
+  }
+  return customerRepository;
+}
 
 export const handler = async (
   event: APIGatewayProxyEvent,
@@ -19,13 +29,11 @@ export const handler = async (
     return ResponseUtil.BadRequest("Query parameters 'start' and 'max' must be valid numbers.");
   }
 
-  const customers: Customer[] = []
+  const results: CustomerPage = await getRepository().getCustomersPage(start, max);
 
   return ResponseUtil.success({
-    data: {
-      customers,
-      lastCustomerId: 0,
-      totalCustomers: 0
-    }
+    customers: results.customers,
+    lastCustomerId: results.lastCustomerId,
+    totalCustomers: results.totalCustomers,
   });
 };
