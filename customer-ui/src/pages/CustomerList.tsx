@@ -1,8 +1,9 @@
 import { useMemo, useState } from "react";
+import { getAPI } from "../api/getAPI";
 import Table from "../components/atoms/Table";
 import Pagination from "../components/atoms/Pagination";
+import useApi from "../hooks/useApi";
 import Layout from "../components/templates/Layout";
-import { mockCustomerData } from "../mocks/customerData";
 import type { CustomerRow } from "../models/CustomerRow";
 
 const customerColumns: Array<keyof CustomerRow> = [
@@ -12,33 +13,42 @@ const customerColumns: Array<keyof CustomerRow> = [
   "registrationDate",
 ];
 
-const customerData = mockCustomerData;
 const recordsPerPage = 10;
 
 function CustomerList() {
+  const { data, isLoading, error } = useApi(getAPI);
   const [currentPage, setCurrentPage] = useState(1);
+  const customerData = data ?? [];
 
   const totalPages = Math.ceil(customerData.length / recordsPerPage);
 
   const paginatedData = useMemo(() => {
     const startIndex = (currentPage - 1) * recordsPerPage;
     return customerData.slice(startIndex, startIndex + recordsPerPage);
-  }, [currentPage]);
+  }, [currentPage, customerData]);
 
   return (
     <Layout title="Customer data explorer">
       <div className="table-section">
-        <Table
-          columns={customerColumns}
-          data={paginatedData}
-          className="data-table"
-          idKey="customerId"
-        />
-        <Pagination
-          currentPage={currentPage}
-          totalPages={totalPages}
-          onPageChange={setCurrentPage}
-        />
+        {isLoading ? (
+          <p>Loading customers...</p>
+        ) : error ? (
+          <p>{error}</p>
+        ) : (
+          <>
+            <Table
+              columns={customerColumns}
+              data={paginatedData}
+              className="data-table"
+              idKey="customerId"
+            />
+            <Pagination
+              currentPage={currentPage}
+              totalPages={totalPages}
+              onPageChange={setCurrentPage}
+            />
+          </>
+        )}
       </div>
     </Layout>
   );
