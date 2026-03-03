@@ -2,6 +2,7 @@ import { handler } from "./main";
 import * as mainModule from "./main";
 import { CustomerRepository } from "./repositories/customerRepository";
 import { ResponseUtil } from "./utilities/response";
+import { Logger } from "./utilities/logger";
 
 jest.mock("./utilities/response");
 jest.mock("./repositories/customerRepository");
@@ -16,6 +17,9 @@ describe("handler", () => {
 
   beforeEach(() => {
     jest.clearAllMocks();
+    jest.spyOn(Logger, "info").mockImplementation(() => {});
+    jest.spyOn(Logger, "debug").mockImplementation(() => {});
+    jest.spyOn(Logger, "error").mockImplementation(() => {});
     mockGetCustomersPage = jest.fn();
     mockRepositoryInstance = {
       getCustomersPage: mockGetCustomersPage,

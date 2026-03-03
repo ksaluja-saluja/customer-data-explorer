@@ -1,5 +1,7 @@
 import { RDSDataClient, ExecuteStatementCommand } from "@aws-sdk/client-rds-data"; // Replace with your DB client if different
 import { Customer, CustomerPage } from "../models/Customer";
+import { Logger } from "../utilities/logger";
+
 
 export class CustomerRepository {
   private rdsCient: RDSDataClient;
@@ -21,8 +23,10 @@ export class CustomerRepository {
 
   async getTotalCustomers(): Promise<number> {
     if (this.cachedTotal && this.cachedTime && Date.now() - this.cachedTime < this.CACHE_TTL_MS) {
+      Logger.info("Fetching total customers from cache");
       return this.cachedTotal;
     } else {
+      Logger.info("Fetching total customers from database");
       const totalQuery = "SELECT COUNT(*) FROM customers";
       const totalCommand = new ExecuteStatementCommand({
         resourceArn: this.resoureArn,

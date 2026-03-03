@@ -1,6 +1,7 @@
 import { RDSDataClient } from "@aws-sdk/client-rds-data";
 import { CustomerRepository } from "./customerRepository";
 import { CustomerPage } from "../models/Customer";
+import { Logger } from "../utilities/logger";
 
 jest.mock("@aws-sdk/client-rds-data");
 
@@ -9,6 +10,9 @@ describe("CustomerRepository", () => {
   let mockSend: jest.Mock;
 
   beforeEach(() => {
+    jest.spyOn(Logger, "info").mockImplementation(() => {});
+    jest.spyOn(Logger, "debug").mockImplementation(() => {});
+    jest.spyOn(Logger, "error").mockImplementation(() => {});
     // Mock RDSDataClient
     const mockRDSClient = new RDSDataClient({});
     mockSend = jest.fn();
