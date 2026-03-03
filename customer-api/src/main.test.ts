@@ -93,4 +93,19 @@ describe("handler", () => {
       totalCustomers: undefined
     });
   });
+
+  it("should return an error if an exception occurs", async () => {
+    const event = {
+      queryStringParameters: { start: "0", max: "2" },
+    } as any;
+
+    mockGetCustomersPage.mockRejectedValueOnce(new Error("Database error"));
+
+    await handler(event, {} as any);
+
+    expect(mockGetCustomersPage).toHaveBeenCalledWith(0, 2);
+    expect(mockError).toHaveBeenCalledWith(
+      "An error occurred while fetching customers."
+    );
+  });
 });

@@ -16,24 +16,28 @@ export const handler = async (
   event: APIGatewayProxyEvent,
   context: Context,
 ) => {
-  const queryParams = event.queryStringParameters || {};
+  try {
+    const queryParams = event.queryStringParameters || {};
 
-  if (!queryParams.start || !queryParams.max) {
-    return ResponseUtil.BadRequest("Missing required query parameters 'start' and 'max'.");
+    if (!queryParams.start || !queryParams.max) {
+      return ResponseUtil.BadRequest("Missing required query parameters 'start' and 'max'.");
+    }
+  
+    const start = queryParams.start ? Number(queryParams.start) : NaN;
+    const max = queryParams.max ? Number(queryParams.max) : NaN;
+  
+    if (isNaN(start) || isNaN(max)) {
+      return ResponseUtil.BadRequest("Query parameters 'start' and 'max' must be valid numbers.");
+    }
+  
+    const results: CustomerPage = await getRepository().getCustomersPage(start, max);
+  
+    return ResponseUtil.success({
+      customers: results.customers,
+      lastCustomerId: results.lastCustomerId,
+      totalCustomers: results.totalCustomers,
+    });
+  } catch (error) {
+    return ResponseUtil.error("An error occurred while fetching customers.");
   }
-
-  const start = queryParams.start ? Number(queryParams.start) : NaN;
-  const max = queryParams.max ? Number(queryParams.max) : NaN;
-
-  if (isNaN(start) || isNaN(max)) {
-    return ResponseUtil.BadRequest("Query parameters 'start' and 'max' must be valid numbers.");
-  }
-
-  const results: CustomerPage = await getRepository().getCustomersPage(start, max);
-
-  return ResponseUtil.success({
-    customers: results.customers,
-    lastCustomerId: results.lastCustomerId,
-    totalCustomers: results.totalCustomers,
-  });
 };
