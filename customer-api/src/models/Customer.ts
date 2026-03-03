@@ -5,3 +5,9 @@ export interface Customer {
   registrationDate: string;
   address: string;
 }
+
+export interface CustomerPage {
+  customers: Customer[];
+  lastCustomerId: string | null;
+  totalCustomers: number;
+}
