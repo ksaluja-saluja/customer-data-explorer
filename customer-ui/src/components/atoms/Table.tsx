@@ -1,15 +1,13 @@
-type TableRow = {
-  [key: string]: string | number | null | undefined;
-};
+type TableCellValue = string | number | null | undefined;
 
-type TableProps<T extends TableRow> = {
+type TableProps<T extends object> = {
   columns: Array<keyof T>;
   data: T[];
   className?: string;
   idKey?: keyof T;
 };
 
-function formatCellValue(value: string | number | null | undefined): string {
+function formatCellValue(value: TableCellValue): string {
   if (value === null || value === undefined) {
     return "-";
   }
@@ -17,7 +15,7 @@ function formatCellValue(value: string | number | null | undefined): string {
   return String(value);
 }
 
-function Table<T extends TableRow>({
+function Table<T extends object>({
   columns,
   data,
   className,
@@ -34,14 +32,12 @@ function Table<T extends TableRow>({
       </thead>
       <tbody>
         {data.map((row) => {
-          const rowId = row[idKey];
+          const rowId = String(row[idKey] ?? "");
           return (
             <tr key={rowId}>
               {columns.map((column) => (
                 <td key={`${rowId}-${String(column)}`}>
-                  {formatCellValue(
-                    row[column] as string | number | null | undefined,
-                  )}
+                  {formatCellValue(row[column] as TableCellValue)}
                 </td>
               ))}
             </tr>
