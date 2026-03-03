@@ -1,12 +1,7 @@
 import Table from "../components/atoms/Table";
 import Layout from "../components/templates/Layout";
-
-type CustomerRow = {
-  customerId: number;
-  fullName: string;
-  email: string;
-  registrationDate: string;
-};
+import { mockCustomerData } from "../mocks/customerData";
+import type { CustomerRow } from "../models/CustomerRow";
 
 const customerColumns: Array<keyof CustomerRow> = [
   "customerId",
@@ -15,33 +10,14 @@ const customerColumns: Array<keyof CustomerRow> = [
   "registrationDate",
 ];
 
-const customerData: CustomerRow[] = [
-  {
-    customerId: 1,
-    fullName: "Aarav Sharma",
-    email: "aarav@example.com",
-    registrationDate: "2025-01-15",
-  },
-  {
-    customerId: 2,
-    fullName: "Meera Kapoor",
-    email: "meera@example.com",
-    registrationDate: "2025-02-20",
-  },
-  {
-    customerId: 3,
-    fullName: "Rohan Mehta",
-    email: "rohan@example.com",
-    registrationDate: "2025-03-10",
-  },
-];
+const customerData = mockCustomerData;
 
 function CustomerList() {
   return (
     <Layout title="Customer data explorer">
       <Table
         columns={customerColumns}
-        data={customerData}
+        data={customerData as any}
         className="data-table"
         idKey="customerId"
       />
