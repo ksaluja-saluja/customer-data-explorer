@@ -6,6 +6,10 @@ export class CustomerRepository {
   private resoureArn: string;
   private secretArn: string;
   private database: string;
+  private cachedTotal: number | null = null;
+  private cachedTime: number | null = null;
+  //TODO: consider making cache TTL configurable via env variable
+  private CACHE_TTL_MS = 2 * 60 * 1000;
 
   constructor() {
     this.rdsCient = new RDSDataClient({});
@@ -15,18 +19,29 @@ export class CustomerRepository {
     this.database = process.env.DB_NAME || "";
   }
 
+  async getTotalCustomers(): Promise<number> {
+    if (this.cachedTotal && this.cachedTime && Date.now() - this.cachedTime < this.CACHE_TTL_MS) {
+      return this.cachedTotal;
+    } else {
+      const totalQuery = "SELECT COUNT(*) FROM customers";
+      const totalCommand = new ExecuteStatementCommand({
+        resourceArn: this.resoureArn,
+        secretArn: this.secretArn,
+        database: this.database,
+        sql: totalQuery, 
+      })
+      const totalResponse = await this.rdsCient.send(totalCommand);
+      const totalCustomers = totalResponse.records && totalResponse.records[0][0].longValue ? totalResponse.records[0][0].longValue : 0;
+  
+      this.cachedTotal = totalCustomers;
+      this.cachedTime = Date.now();
+      return totalCustomers;
+    }
+  }
+
   // Method to get paginated customers
   async getCustomersPage(start: number, max: number): Promise<CustomerPage> {
-    //TODO: cache total records for few minutes to avoid hitting DB every time for total count
-    const totalQuery = "SELECT COUNT(*) FROM customers";
-    const totalCommand = new ExecuteStatementCommand({
-      resourceArn: this.resoureArn,
-      secretArn: this.secretArn,
-      database: this.database,
-      sql: totalQuery, 
-    })
-    const totalResponse = await this.rdsCient.send(totalCommand);
-    const totalCustomers = totalResponse.records && totalResponse.records[0][0].longValue ? totalResponse.records[0][0].longValue : 0;
+    const totalCustomers = await this.getTotalCustomers();
 
     /* Assuming customer_id is an auto-incrementing primary key, we can use it for pagination.
     If not, we may need to adjust the query to use a different column for ordering and pagination */
