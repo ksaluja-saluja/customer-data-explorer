@@ -9,13 +9,13 @@
   max-width: 1200px;
 }
 
-@media (max-width: $mobile-max) {
+@container page (max-width: 767px) {
   .table-section {
     gap: 0.75rem;
   }
 }
 
-@media (min-width: $desktop-min) {
+@container page (min-width: 1024px) {
   .table-section {
     max-width: 1100px;
   }
