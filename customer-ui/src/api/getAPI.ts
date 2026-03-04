@@ -1,9 +1,11 @@
+import { getConfig } from "../config";
 import type { CustomerRow } from "../models/CustomerRow";
 
-const MOCK_SERVER_URL = "http://localhost:4001/api/customers";
-
 export async function getAPI(): Promise<CustomerRow[]> {
-  const response = await fetch(MOCK_SERVER_URL);
+  const config = getConfig();
+  const url = `${config.apiBaseUrl}${config.customerApiEndpoint}`;
+  
+  const response = await fetch(url);
 
   if (!response.ok) {
     throw new Error("Failed to fetch customer data");
