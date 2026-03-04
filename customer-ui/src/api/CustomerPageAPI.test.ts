@@ -1,5 +1,5 @@
 import { describe, it, expect, vi, beforeEach, afterEach } from "vitest";
-import { getCustomerPageAPI, type CustomerPageResponse } from "./CustomerPage";
+import { getCustomerPageAPI, type CustomerPageResponse } from "./CustomerPageAPI";
 import * as ConfigModule from "../config";
 
 // Mock the config module
