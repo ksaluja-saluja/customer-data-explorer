@@ -1,11 +1,11 @@
-import { handler } from "./main";
+import { handler, getCustomerService } from "./main";
 import * as mainModule from "./main";
-import { CustomerRepository } from "./repositories/customerRepository";
+import { CustomerService } from "./services/CustomerService";
 import { ResponseUtil } from "./utilities/response";
 import { Logger } from "./utilities/logger";
 
 jest.mock("./utilities/response");
-jest.mock("./repositories/customerRepository");
+jest.mock("./services/CustomerService");
 
 describe("handler", () => {
   const mockSuccess = jest.spyOn(ResponseUtil, "success");
@@ -13,7 +13,7 @@ describe("handler", () => {
   const mockError = jest.spyOn(ResponseUtil, "error");
 
   let mockGetCustomersPage: jest.Mock;
-  let mockRepositoryInstance: jest.Mocked<CustomerRepository>;
+  let mockServiceInstance: jest.Mocked<CustomerService>;
 
   beforeEach(() => {
     jest.clearAllMocks();
@@ -21,11 +21,11 @@ describe("handler", () => {
     jest.spyOn(Logger, "debug").mockImplementation(() => {});
     jest.spyOn(Logger, "error").mockImplementation(() => {});
     mockGetCustomersPage = jest.fn();
-    mockRepositoryInstance = {
+    mockServiceInstance = {
       getCustomersPage: mockGetCustomersPage,
     } as any;
 
-    jest.spyOn(mainModule, "getRepository").mockReturnValue(mockRepositoryInstance);
+    jest.spyOn(mainModule, "getCustomerService").mockReturnValue(mockServiceInstance);
   });
 
   it("should return BadRequest if 'start' or 'max' is missing", async () => {

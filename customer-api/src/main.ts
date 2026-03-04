@@ -1,17 +1,40 @@
 import { APIGatewayProxyEvent, Context } from "aws-lambda";
 import { ResponseUtil } from "./utilities/response";
-import { CustomerRepository } from "./repositories/customerRepository";
+import { CustomerService } from "./services/CustomerService";
+import { CustomerDataSource } from "./models/CustomerDataSource";
+import { RDSCustomerDataSource } from "./repositories/RDSCustomerDataSource";
+import { MockCustomerDataSource } from "./repositories/MockCustomerDataSource";
 import { CustomerPage } from "./models/Customer";
 import { Logger } from "./utilities/logger";
 
-let customerRepository: CustomerRepository | null = null;
+let customerService: CustomerService | null = null;
 
-export const getRepository = (): CustomerRepository => {
-  if (!customerRepository) {
-    customerRepository = new CustomerRepository();
+/**
+ * Factory function to create appropriate data source based on environment
+ */
+const createDataSource = (): CustomerDataSource => {
+  const dataSourceType = process.env.DATA_SOURCE || "rds";
+  
+  Logger.info(`Creating data source of type: ${dataSourceType}`);
+  
+  if (dataSourceType === "mock") {
+    return new MockCustomerDataSource();
   }
-  return customerRepository;
-}
+  
+  // Default to RDS
+  return new RDSCustomerDataSource();
+};
+
+/**
+ * Get or create singleton customer service instance
+ */
+export const getCustomerService = (): CustomerService => {
+  if (!customerService) {
+    const dataSource = createDataSource();
+    customerService = new CustomerService(dataSource);
+  }
+  return customerService;
+};
 
 export const handler = async (
   event: APIGatewayProxyEvent,
@@ -35,7 +58,7 @@ export const handler = async (
     }
   
     Logger.info("Fetching customer page", { start, max });
-    const results: CustomerPage = await getRepository().getCustomersPage(start, max);
+    const results: CustomerPage = await getCustomerService().getCustomersPage(start, max);
     Logger.info("Successfully fetched customer page");
     Logger.debug("DEBUG: Successfully fetched customer page", { results });
 
