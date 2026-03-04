@@ -3,7 +3,18 @@
   "version": "1.0.0",
   "main": "index.js",
   "scripts": {
-    "test": "jest"
+    "test": "jest",
+    "build": "tsc",
+    "cdk": "cdk",
+    "cdk:synth": "cdk synth",
+    "cdk:deploy": "cdk deploy",
+    "cdk:diff": "cdk diff",
+    "cdk:destroy": "cdk destroy",
+    "dev": "ts-node src/local-server.ts",
+    "dev:watch": "nodemon --exec ts-node src/local-server.ts",
+    "start": "npm run dev",
+    "local:start": "npm run dev",
+    "local:sam": "npm run cdk:synth && sam local start-api -t ./cdk.out/CustomerApiStack.template.json"
   },
   "author": "",
   "license": "ISC",
@@ -13,10 +24,19 @@
   },
   "devDependencies": {
     "@types/aws-lambda": "^8.10.161",
+    "@types/express": "^5.0.6",
     "@types/jest": "^30.0.0",
     "@types/node": "^25.3.3",
+    "@types/source-map-support": "^0.5.10",
+    "aws-cdk": "^2.1108.0",
+    "aws-cdk-lib": "^2.241.0",
+    "constructs": "^10.5.1",
+    "express": "^5.2.1",
     "jest": "^30.2.0",
+    "nodemon": "^3.1.14",
+    "source-map-support": "^0.5.21",
     "ts-jest": "^29.4.6",
+    "ts-node": "^10.9.2",
     "typescript": "^5.9.3"
   },
   "description": ""
