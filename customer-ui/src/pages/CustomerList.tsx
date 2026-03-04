@@ -13,6 +13,13 @@ const customerColumns: Array<keyof CustomerRow> = [
   "registrationDate",
 ];
 
+const customerColumnLabels: Partial<Record<keyof CustomerRow, string>> = {
+  customerId: "Customer ID",
+  fullName: "Name",
+  email: "Email",
+  registrationDate: "Registration Date",
+};
+
 const recordsPerPage = 10;
 
 function CustomerList() {
@@ -38,6 +45,7 @@ function CustomerList() {
           <>
             <Table
               columns={customerColumns}
+              columnLabels={customerColumnLabels}
               data={paginatedData}
               className="data-table"
               idKey="customerId"

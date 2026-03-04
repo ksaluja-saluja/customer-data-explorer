@@ -5,6 +5,7 @@ type TableProps<T extends object> = {
   data: T[];
   className?: string;
   idKey?: keyof T;
+  columnLabels?: Partial<Record<keyof T, string>>;
 };
 
 function formatCellValue(value: TableCellValue): string {
@@ -20,13 +21,16 @@ function Table<T extends object>({
   data,
   className,
   idKey = "id" as keyof T,
+  columnLabels,
 }: TableProps<T>) {
   return (
     <table className={className}>
       <thead>
         <tr>
           {columns.map((column) => (
-            <th key={String(column)}>{String(column)}</th>
+            <th key={String(column)}>
+              {columnLabels?.[column] ?? String(column)}
+            </th>
           ))}
         </tr>
       </thead>
