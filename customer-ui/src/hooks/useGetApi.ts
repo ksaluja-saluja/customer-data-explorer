@@ -6,7 +6,7 @@ type UseApiResult<T> = {
   error: string | null;
 };
 
-function useApi<T>(fetcher: (...args: any[]) => Promise<T>, dependencies: any[] = []): UseApiResult<T> {
+function useGetApi<T>(fetcher: (...args: any[]) => Promise<T>, dependencies: any[] = []): UseApiResult<T> {
   const [data, setData] = useState<T | null>(null);
   const [isLoading, setIsLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
@@ -36,4 +36,4 @@ function useApi<T>(fetcher: (...args: any[]) => Promise<T>, dependencies: any[] 
   };
 }
 
-export default useApi;
+export default useGetApi;
