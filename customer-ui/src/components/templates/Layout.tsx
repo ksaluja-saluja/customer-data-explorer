@@ -9,9 +9,9 @@ type LayoutProps = {
 
 function Layout({ title, children }: LayoutProps) {
   return (
-    <div className="customer-page">
+    <div className="c-customer-page">
       <Header title={title} />
-      <main className="customer-page__main">{children}</main>
+      <main className="c-customer-page__main">{children}</main>
       <Footer />
     </div>
   );

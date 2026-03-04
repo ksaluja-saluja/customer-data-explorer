@@ -1,0 +1,33 @@
+// ============================================================================
+// Responsive Mixins
+// ============================================================================
+//
+// Mixins for responsive design using container queries
+//
+
+@use "../1-settings/breakpoints" as settings;
+
+// Mobile-first container queries for responsive styling
+@mixin respond-to($breakpoint) {
+  @if $breakpoint == "mobile-only" {
+    @container page (max-width: settings.$mobile-max) {
+      @content;
+    }
+  } @else if $breakpoint == "tablet" {
+    @container page (min-width: settings.$tablet-min) and (max-width: settings.$tablet-max) {
+      @content;
+    }
+  } @else if $breakpoint == "tablet-and-up" {
+    @container page (min-width: settings.$tablet-min) {
+      @content;
+    }
+  } @else if $breakpoint == "desktop" {
+    @container page (min-width: settings.$desktop-min) {
+      @content;
+    }
+  } @else if $breakpoint == "desktop-and-up" {
+    @container page (min-width: settings.$desktop-min) {
+      @content;
+    }
+  }
+}

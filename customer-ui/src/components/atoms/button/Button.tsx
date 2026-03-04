@@ -11,7 +11,7 @@ function Button({ children, variant = "secondary", ...props }: ButtonProps) {
   const variantClass = variant === "primary" ? "button--primary" : "";
 
   return (
-    <button className={`button ${variantClass}`.trim()} {...props}>
+    <button className={`c-button ${variantClass}`.trim()} {...props}>
       {children}
     </button>
   );

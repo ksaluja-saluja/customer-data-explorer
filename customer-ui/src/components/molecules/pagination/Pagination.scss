@@ -1,15 +1,15 @@
-@use "../../../styles/breakpoints" as *;
+@use "../../../styles/1-settings/spacing" as spacing;
 
-.pagination {
+.c-pagination {
   display: flex;
   align-items: center;
-  gap: 0.5rem;
+  gap: spacing.$spacing-sm;
   flex-wrap: wrap;
   justify-content: center;
 }
 
 @container page (max-width: 767px) {
-  .pagination {
-    gap: 0.4rem;
+  .c-pagination {
+    gap: spacing.$spacing-2xs;
   }
 }

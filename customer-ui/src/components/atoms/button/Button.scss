@@ -1,7 +1,11 @@
-.button {
-  border: 1px solid #ddd;
-  background: #fff;
-  padding: 0.4rem 0.7rem;
+@use "../../../styles/1-settings/colors" as colors;
+@use "../../../styles/1-settings/spacing" as spacing;
+@use "../../../styles/1-settings/typography" as typography;
+
+.c-button {
+  border: 1px solid colors.$color-border;
+  background: colors.$color-white;
+  padding: spacing.$spacing-2xs spacing.$spacing-lg;
   border-radius: 6px;
   cursor: pointer;
   font-size: inherit;
@@ -13,7 +17,7 @@
   }
 
   &--primary {
-    background: #f1f1f1;
-    font-weight: 600;
+    background: colors.$color-gray-100;
+    font-weight: typography.$font-weight-semibold;
   }
 }

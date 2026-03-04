@@ -19,7 +19,7 @@ function Pagination({
   const pages = Array.from({ length: totalPages }, (_, index) => index + 1);
 
   return (
-    <nav className="pagination" aria-label="Table pagination">
+    <nav className="c-pagination" aria-label="Table pagination">
       <Button
         type="button"
         onClick={() => onPageChange(currentPage - 1)}

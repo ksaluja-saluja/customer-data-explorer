@@ -1,6 +1,8 @@
-@use "../../../styles/breakpoints" as *;
+@use "../../../styles/1-settings/colors" as colors;
+@use "../../../styles/1-settings/spacing" as spacing;
+@use "../../../styles/2-tools/responsive" as responsive;
 
-.table {
+.c-table {
   margin: 0;
   border-collapse: collapse;
   width: 100%;
@@ -8,13 +10,13 @@
 
   th,
   td {
-    border: 1px solid #ddd;
-    padding: 0.5rem 0.75rem;
+    border: 1px solid colors.$color-border;
+    padding: spacing.$spacing-sm spacing.$spacing-lg;
     word-break: break-word;
   }
 
   th {
-    background-color: #f5f5f5;
+    background-color: colors.$color-gray-50;
     text-align: center;
   }
 
@@ -24,7 +26,7 @@
 }
 
 @container page (max-width: 767px) {
-  .table {
+  .c-table {
     font-size: 0.85rem;
     border-collapse: separate;
     border-spacing: 0;
@@ -41,17 +43,17 @@
     }
 
     tr {
-      margin-bottom: 0.75rem;
-      border: 1px solid #ddd;
+      margin-bottom: spacing.$spacing-lg;
+      border: 1px solid colors.$color-border;
       border-radius: 8px;
       overflow: hidden;
-      background: #fff;
+      background: colors.$color-white;
     }
 
     td {
-      padding: 0.45rem 0.6rem;
+      padding: spacing.$spacing-xs spacing.$spacing-md;
       border: 0;
-      border-bottom: 1px solid #eee;
+      border-bottom: 1px solid colors.$color-border-light;
       text-align: left;
     }
 
@@ -67,8 +69,8 @@
 }
 
 @container page (min-width: 768px) and (max-width: 1023px) {
-  .table th,
-  .table td {
-    padding: 0.45rem 0.65rem;
+  .c-table th,
+  .c-table td {
+    padding: spacing.$spacing-xs spacing.$spacing-md;
   }
 }

@@ -1,0 +1,76 @@
+// ============================================================================
+// Base Element Styles
+// ============================================================================
+//
+// Default styles for bare HTML elements
+//
+
+@use "../1-settings/colors" as colors;
+@use "../1-settings/typography" as typography;
+@use "../1-settings/sizing" as sizing;
+
+:root {
+  font-family: typography.$font-family-base;
+  line-height: typography.$line-height-base;
+  font-weight: typography.$font-weight-normal;
+  color-scheme: light dark;
+  color: colors.$color-text-light;
+  background-color: colors.$color-dark-bg;
+}
+
+body {
+  margin: 0;
+  min-width: sizing.$min-width-content;
+  min-height: sizing.$min-height-viewport;
+}
+
+a {
+  font-weight: typography.$font-weight-medium;
+  color: colors.$color-link;
+  text-decoration: inherit;
+
+  &:hover {
+    color: colors.$color-link-hover-dark;
+  }
+}
+
+h1 {
+  font-size: typography.$font-size-heading-1;
+  line-height: typography.$line-height-tight;
+}
+
+button {
+  border-radius: 8px;
+  border: 1px solid transparent;
+  padding: 0.6em 1.2em;
+  font-size: 1em;
+  font-weight: typography.$font-weight-medium;
+  font-family: inherit;
+  background-color: colors.$color-dark;
+  cursor: pointer;
+  transition: border-color 0.25s;
+
+  &:hover {
+    border-color: colors.$color-link;
+  }
+
+  &:focus,
+  &:focus-visible {
+    outline: 4px auto -webkit-focus-ring-color;
+  }
+}
+
+@media (prefers-color-scheme: light) {
+  :root {
+    color: colors.$color-text-dark;
+    background-color: colors.$color-white;
+  }
+
+  a:hover {
+    color: colors.$color-link-hover;
+  }
+
+  button {
+    background-color: colors.$color-light-gray;
+  }
+}

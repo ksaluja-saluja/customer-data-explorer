@@ -12,13 +12,13 @@ describe("Button Component", () => {
   it("should have default button class", () => {
     render(<Button>Default</Button>);
     const button = screen.getByRole("button", { name: "Default" });
-    expect(button.className).toContain("button");
+    expect(button.className).toContain("c-button");
   });
 
   it("should apply primary variant class", () => {
     render(<Button variant="primary">Primary</Button>);
     const button = screen.getByRole("button", { name: "Primary" });
-    expect(button.className).toContain("button--primary");
+    expect(button.className).toContain("c-button--primary");
   });
 
   it("should apply secondary variant by default", () => {

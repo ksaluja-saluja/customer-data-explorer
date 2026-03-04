@@ -120,7 +120,7 @@ function CustomerList() {
 
   return (
     <Layout title="Customer data explorer">
-      <div className="table-section">
+      <div className="c-table-section">
         {loading && currentPage === 1 ? (
           <p>Loading customers...</p>
         ) : error ? (
@@ -131,7 +131,7 @@ function CustomerList() {
               columns={customerColumns}
               columnLabels={customerColumnLabels}
               data={displayData}
-              className="table"
+              className="c-table"
               idKey="customerId"
             />
             {!isMobile && (
@@ -142,7 +142,7 @@ function CustomerList() {
               />
             )}
             {isMobile && isLoadingMore && (
-              <p className="table-section__loading-indicator">
+              <p className="c-table-section__loading-indicator">
                 Loading more records...
               </p>
             )}

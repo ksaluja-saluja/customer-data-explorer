@@ -1,58 +1,61 @@
-@use "../../../styles/breakpoints" as *;
+@use "../../../styles/1-settings/colors" as colors;
+@use "../../../styles/1-settings/spacing" as spacing;
+@use "../../../styles/1-settings/sizing" as sizing;
+@use "../../../styles/1-settings/typography" as typography;
 
-.app-header {
+.c-app-header {
   position: fixed;
   top: 0;
   left: 0;
   width: 100%;
-  padding: 1rem 1.5rem;
+  padding: spacing.$spacing-xl spacing.$spacing-3xl;
   box-sizing: border-box;
   z-index: 100;
-  background-color: #fff;
+  background-color: colors.$color-white;
 
   &__brand {
     display: flex;
     align-items: center;
-    gap: 0.75rem;
+    gap: spacing.$spacing-lg;
   }
 
   &__logo {
-    width: 2rem;
-    height: 2rem;
+    width: sizing.$size-medium;
+    height: sizing.$size-medium;
   }
 
   &__title {
     margin: 0;
-    font-size: 1.5rem;
-    line-height: 1.1;
+    font-size: typography.$font-size-xx-large;
+    line-height: typography.$line-height-tight;
   }
 }
 
 @container page (max-width: 767px) {
-  .app-header {
-    padding: 0.75rem 1rem;
+  .c-app-header {
+    padding: spacing.$spacing-lg spacing.$spacing-xl;
 
     &__brand {
-      gap: 0.5rem;
+      gap: spacing.$spacing-sm;
     }
 
     &__logo {
-      width: 1.5rem;
-      height: 1.5rem;
+      width: sizing.$size-small;
+      height: sizing.$size-small;
     }
 
     &__title {
-      font-size: 1.15rem;
+      font-size: typography.$font-size-large;
     }
   }
 }
 
 @container page (min-width: 768px) and (max-width: 1023px) {
-  .app-header {
-    padding: 0.9rem 1.25rem;
+  .c-app-header {
+    padding: spacing.$spacing-md spacing.$spacing-2xl;
 
     &__title {
-      font-size: 1.35rem;
+      font-size: typography.$font-size-x-large;
     }
   }
 }
