@@ -1,0 +1,29 @@
+@use "../styles/breakpoints" as *;
+
+.table-section {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  align-items: center;
+  width: 100%;
+  max-width: 1200px;
+}
+
+.loading-more {
+  font-size: 0.9rem;
+  color: #666;
+  padding: 0.5rem;
+  text-align: center;
+}
+
+@container page (max-width: 767px) {
+  .table-section {
+    gap: 0.75rem;
+  }
+}
+
+@container page (min-width: 1024px) {
+  .table-section {
+    max-width: 1100px;
+  }
+}

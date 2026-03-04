@@ -6,40 +6,28 @@ type UseApiResult<T> = {
   error: string | null;
 };
 
-function useApi<T>(fetcher: () => Promise<T>): UseApiResult<T> {
+function useGetApi<T>(fetcher: (...args: any[]) => Promise<T>, dependencies: any[] = []): UseApiResult<T> {
   const [data, setData] = useState<T | null>(null);
   const [isLoading, setIsLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
 
   useEffect(() => {
-    let isMounted = true;
-
     const load = async () => {
       setIsLoading(true);
       setError(null);
 
       try {
         const response = await fetcher();
-        if (isMounted) {
-          setData(response);
-        }
+        setData(response);
       } catch {
-        if (isMounted) {
-          setError("Failed to load data");
-        }
+        setError("Failed to load data");
       } finally {
-        if (isMounted) {
-          setIsLoading(false);
-        }
+        setIsLoading(false);
       }
     };
 
     load();
-
-    return () => {
-      isMounted = false;
-    };
-  }, [fetcher]);
+  }, [fetcher, ...dependencies]);
 
   return {
     data,
@@ -48,4 +36,4 @@ function useApi<T>(fetcher: () => Promise<T>): UseApiResult<T> {
   };
 }
 
-export default useApi;
+export default useGetApi;
