@@ -1,8 +1,8 @@
-import { useMemo, useState, useEffect, useCallback } from "react";
-import { getCustomerPageAPI } from "../api/CustomerPageAPI";
+import { useMemo, useState, useEffect } from "react";
+import { useAppDispatch, useAppSelector } from "../redux/hooks";
+import { getCustomerPage } from "../redux/slices/customerPageSlice";
 import Table from "../components/atoms/table/Table";
 import Pagination from "../components/atoms/pagination/Pagination";
-import useGetApi from "../hooks/useGetApi";
 import Layout from "../components/templates/Layout";
 import type { CustomerRow } from "../models/CustomerRow";
 import "./CustomerList.scss";
@@ -24,37 +24,46 @@ const customerColumnLabels: Partial<Record<keyof CustomerRow, string>> = {
 const recordsPerPage = 10;
 
 function CustomerList() {
+  const dispatch = useAppDispatch();
   const [currentPage, setCurrentPage] = useState(1);
   const [isMobile, setIsMobile] = useState(false);
   const [totalCustomers, setTotalCustomers] = useState(0);
   const [accumulatedData, setAccumulatedData] = useState<CustomerRow[]>([]);
   const [isLoadingMore, setIsLoadingMore] = useState(false);
 
-  // Create a memoized fetcher function that depends on currentPage
-  const fetcher = useCallback(
-    () =>
-      getCustomerPageAPI((currentPage - 1) * recordsPerPage, recordsPerPage),
-    [currentPage],
+  // Get data from Redux store
+  const { pages, loading, error } = useAppSelector(
+    (state) => state.customerPage,
   );
-  const { data, isLoading, error } = useGetApi(fetcher, [currentPage]);
 
-  const customerData = data?.customers ?? [];
+  // Fetch customer page data when currentPage changes
+  useEffect(() => {
+    const start = (currentPage - 1) * recordsPerPage;
+    dispatch(getCustomerPage({ start, max: recordsPerPage }));
+  }, [currentPage, dispatch]);
+
+  // Get current page data from Redux store
+  const cacheKey = `${(currentPage - 1) * recordsPerPage}-${recordsPerPage}`;
+  const customerPageData = pages[cacheKey];
+  const customerData = customerPageData?.customers ?? [];
 
   // Update total customers when data changes
   useEffect(() => {
-    if (data?.totalCustomers) {
-      setTotalCustomers(data.totalCustomers);
+    if (customerPageData?.totalCustomers) {
+      setTotalCustomers(customerPageData.totalCustomers);
     }
-  }, [data]);
+  }, [customerPageData]);
 
   // Accumulate data for mobile infinite scroll
   useEffect(() => {
     if (isMobile && customerData.length > 0) {
       setAccumulatedData((prev) => {
         // Only add new customers (avoid duplicates)
-        const existingIds = new Set(prev.map((c) => c.customerId));
+        const existingIds = new Set(
+          prev.map((customer) => customer.customerId),
+        );
         const newCustomers = customerData.filter(
-          (c) => !existingIds.has(c.customerId),
+          (customer) => !existingIds.has(customer.customerId),
         );
         return [...prev, ...newCustomers];
       });
@@ -112,7 +121,7 @@ function CustomerList() {
   return (
     <Layout title="Customer data explorer">
       <div className="table-section">
-        {isLoading && currentPage === 1 ? (
+        {loading && currentPage === 1 ? (
           <p>Loading customers...</p>
         ) : error ? (
           <p>{error}</p>
