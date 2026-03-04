@@ -7,7 +7,7 @@ export interface CustomerPageResponse {
   totalCustomers: number;
 }
 
-export async function getAPI(start: number = 0, max: number = 10): Promise<CustomerPageResponse> {
+export async function getCustomerPageAPI(start: number = 0, max: number = 10): Promise<CustomerPageResponse> {
   const config = getConfig();
   const url = new URL(`${config.apiBaseUrl}${config.customerApiEndpoint}`);
   

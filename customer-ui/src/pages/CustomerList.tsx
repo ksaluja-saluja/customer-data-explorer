@@ -1,5 +1,5 @@
 import { useMemo, useState, useEffect, useCallback } from "react";
-import { getAPI } from "../api/getAPI";
+import { getCustomerPageAPI } from "../api/CustomerPage";
 import Table from "../components/atoms/table/Table";
 import Pagination from "../components/atoms/pagination/Pagination";
 import useApi from "../hooks/useApi";
@@ -32,7 +32,7 @@ function CustomerList() {
 
   // Create a memoized fetcher function that depends on currentPage
   const fetcher = useCallback(
-    () => getAPI((currentPage - 1) * recordsPerPage, recordsPerPage),
+    () => getCustomerPageAPI((currentPage - 1) * recordsPerPage, recordsPerPage),
     [currentPage],
   );
   const { data, isLoading, error } = useApi(fetcher, [currentPage]);
