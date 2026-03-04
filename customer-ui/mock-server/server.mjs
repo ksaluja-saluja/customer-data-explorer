@@ -1,4 +1,5 @@
 import { createServer } from "node:http";
+import { URL } from "node:url";
 
 const PORT = Number(process.env.MOCK_SERVER_PORT || 4001);
 
@@ -30,10 +31,33 @@ const server = createServer((req, res) => {
     return;
   }
 
-  if (req.url === "/api/customers" && req.method === "GET") {
+  if (req.url.startsWith("/api/customers") && req.method === "GET") {
+    const url = new URL(req.url, `http://localhost:${PORT}`);
+    const start = parseInt(url.searchParams.get("start") || "0", 10);
+    const max = parseInt(url.searchParams.get("max") || "10", 10);
+
+    // Validate query parameters
+    if (isNaN(start) || isNaN(max) || start < 0 || max <= 0) {
+      res.writeHead(400, { "Content-Type": "application/json" });
+      res.end(JSON.stringify({ error: "Invalid query parameters" }));
+      return;
+    }
+
+    // Paginate the data
+    const paginatedCustomers = customerData.slice(start, start + max);
+    const lastCustomerId = paginatedCustomers.length > 0 
+      ? paginatedCustomers[paginatedCustomers.length - 1].customerId.toString()
+      : null;
+
+    const response = {
+      customers: paginatedCustomers,
+      lastCustomerId,
+      totalCustomers: customerData.length,
+    };
+
     res.setHeader("Content-Type", "application/json");
     res.writeHead(200);
-    res.end(JSON.stringify(customerData));
+    res.end(JSON.stringify(response));
     return;
   }
 
