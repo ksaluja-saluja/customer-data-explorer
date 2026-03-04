@@ -6,31 +6,31 @@
   flex-direction: column;
   container-type: inline-size;
   container-name: page;
-}
 
-.customer-main {
-  flex: 1;
-  display: flex;
-  align-items: flex-start;
-  justify-content: center;
-  padding: 5rem 1rem 1rem;
-  box-sizing: border-box;
+  &__main {
+    flex: 1;
+    display: flex;
+    align-items: flex-start;
+    justify-content: center;
+    padding: 5rem 1rem 1rem;
+    box-sizing: border-box;
+  }
 }
 
 @container page (max-width: 767px) {
-  .customer-main {
+  .customer-page__main {
     padding: 4rem 0.75rem 0.75rem;
   }
 }
 
 @container page (min-width: 768px) and (max-width: 1023px) {
-  .customer-main {
+  .customer-page__main {
     padding: 4.5rem 1rem 1rem;
   }
 }
 
 @container page (min-width: 1024px) {
-  .customer-main {
+  .customer-page__main {
     padding: 5rem 1.5rem 1.25rem;
   }
 }

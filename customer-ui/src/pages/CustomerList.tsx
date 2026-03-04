@@ -131,7 +131,7 @@ function CustomerList() {
               columns={customerColumns}
               columnLabels={customerColumnLabels}
               data={displayData}
-              className="data-table"
+              className="table"
               idKey="customerId"
             />
             {!isMobile && (
@@ -142,7 +142,7 @@ function CustomerList() {
               />
             )}
             {isMobile && isLoadingMore && (
-              <p className="loading-indicator">Loading more records...</p>
+              <p className="table-section__loading-indicator">Loading more records...</p>
             )}
           </>
         )}

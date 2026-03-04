@@ -7,13 +7,13 @@
   align-items: center;
   width: 100%;
   max-width: 1200px;
-}
 
-.loading-more {
-  font-size: 0.9rem;
-  color: #666;
-  padding: 0.5rem;
-  text-align: center;
+  &__loading-indicator {
+    font-size: 0.9rem;
+    color: #666;
+    padding: 0.5rem;
+    text-align: center;
+  }
 }
 
 @container page (max-width: 767px) {

@@ -11,7 +11,7 @@ function Layout({ title, children }: LayoutProps) {
   return (
     <div className="customer-page">
       <Header title={title} />
-      <main className="customer-main">{children}</main>
+      <main className="customer-page__main">{children}</main>
       <Footer />
     </div>
   );

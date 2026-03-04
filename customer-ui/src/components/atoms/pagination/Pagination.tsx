@@ -17,7 +17,7 @@ function Pagination({ currentPage, totalPages, onPageChange }: PaginationProps) 
     <nav className="pagination" aria-label="Table pagination">
       <button
         type="button"
-        className="pagination-button"
+        className="pagination__button"
         onClick={() => onPageChange(currentPage - 1)}
         disabled={currentPage === 1}
       >
@@ -28,7 +28,7 @@ function Pagination({ currentPage, totalPages, onPageChange }: PaginationProps) 
         <button
           key={page}
           type="button"
-          className={`pagination-button ${page === currentPage ? "active" : ""}`}
+          className={`pagination__button ${page === currentPage ? "pagination__button--active" : ""}`}
           onClick={() => onPageChange(page)}
         >
           {page}
@@ -37,7 +37,7 @@ function Pagination({ currentPage, totalPages, onPageChange }: PaginationProps) 
 
       <button
         type="button"
-        className="pagination-button"
+        className="pagination__button"
         onClick={() => onPageChange(currentPage + 1)}
         disabled={currentPage === totalPages}
       >
