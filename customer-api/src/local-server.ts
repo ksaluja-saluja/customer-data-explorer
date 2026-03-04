@@ -2,6 +2,12 @@ import express, { Request, Response } from 'express';
 import { APIGatewayProxyEvent, Context } from 'aws-lambda';
 import { handler } from './main';
 
+// Set default data source to mock for local development
+// Override by setting DATA_SOURCE=rds in environment
+if (!process.env.DATA_SOURCE) {
+  process.env.DATA_SOURCE = 'mock';
+}
+
 const app = express();
 const PORT = process.env.PORT || 3000;
 
@@ -129,11 +135,13 @@ app.get('/', (req: Request, res: Response) => {
 
 // Start server
 app.listen(PORT, () => {
+  const dataSource = process.env.DATA_SOURCE || 'rds';
   console.log('\n' + '='.repeat(60));
   console.log('🚀 Local Lambda Server Running');
   console.log('='.repeat(60));
   console.log(`📍 Server URL: http://localhost:${PORT}`);
   console.log(`📋 API Endpoint: http://localhost:${PORT}/customers?start=0&max=10`);
   console.log(`❤️  Health Check: http://localhost:${PORT}/health`);
+  console.log(`💾 Data Source: ${dataSource.toUpperCase()}`);
   console.log('='.repeat(60) + '\n');
 });
