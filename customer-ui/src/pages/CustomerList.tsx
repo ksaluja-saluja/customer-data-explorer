@@ -2,7 +2,7 @@ import { useMemo, useState, useEffect } from "react";
 import { useAppDispatch, useAppSelector } from "../redux/hooks";
 import { getCustomerPage } from "../redux/slices/customerPageSlice";
 import Table from "../components/atoms/table/Table";
-import Pagination from "../components/atoms/pagination/Pagination";
+import Pagination from "../components/molecules/pagination/Pagination";
 import Layout from "../components/templates/Layout";
 import type { CustomerRow } from "../models/CustomerRow";
 import "./CustomerList.scss";
@@ -142,7 +142,9 @@ function CustomerList() {
               />
             )}
             {isMobile && isLoadingMore && (
-              <p className="table-section__loading-indicator">Loading more records...</p>
+              <p className="table-section__loading-indicator">
+                Loading more records...
+              </p>
             )}
           </>
         )}
