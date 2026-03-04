@@ -10,7 +10,6 @@ Contains 100 mock customer records with the following fields:
 - **fullName**: Customer's full name
 - **email**: Customer's email address
 - **registrationDate**: Date when customer registered (YYYY-MM-DD format)
-- **address**: Customer's address
 
 ## Usage
 
@@ -26,6 +25,7 @@ const dataSource = new MockCustomerDataSource();
 ## Modifying Mock Data
 
 You can edit `customers.json` directly to:
+
 - Add more customers
 - Change existing customer data
 - Adjust the structure (must match the `Customer` interface)
@@ -60,6 +60,7 @@ npm run dev
 ```
 
 The logs will confirm:
+
 ```
 [INFO] Loaded 100 mock customers from JSON file
 ```

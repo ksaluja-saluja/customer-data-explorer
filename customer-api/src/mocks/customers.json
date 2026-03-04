@@ -3,700 +3,600 @@
     "customerId": "1",
     "fullName": "Jane Brown",
     "email": "jane.brown1@example.com",
-    "registrationDate": "2021-02-02",
-    "address": "101 Oak Ave, Los Angeles, NY 10001"
+    "registrationDate": "2021-02-02"
   },
   {
     "customerId": "2",
     "fullName": "Michael Miller",
     "email": "michael.miller2@example.com",
-    "registrationDate": "2022-03-03",
-    "address": "102 Maple Dr, Chicago, NY 10002"
+    "registrationDate": "2022-03-03"
   },
   {
     "customerId": "3",
     "fullName": "Sarah Martinez",
     "email": "sarah.martinez3@example.com",
-    "registrationDate": "2023-04-04",
-    "address": "103 Park Blvd, Houston, NY 10003"
+    "registrationDate": "2023-04-04"
   },
   {
     "customerId": "4",
     "fullName": "David Williams",
     "email": "david.williams4@example.com",
-    "registrationDate": "2024-05-05",
-    "address": "104 Cedar Ln, Phoenix, NY 10004"
+    "registrationDate": "2024-05-05"
   },
   {
     "customerId": "5",
     "fullName": "Emily Garcia",
     "email": "emily.garcia5@example.com",
-    "registrationDate": "2025-06-06",
-    "address": "105 Pine Rd, Philadelphia, NY 10005"
+    "registrationDate": "2025-06-06"
   },
   {
     "customerId": "6",
     "fullName": "Chris Rodriguez",
     "email": "chris.rodriguez6@example.com",
-    "registrationDate": "2020-07-07",
-    "address": "106 Elm St, San Antonio, NY 10006"
+    "registrationDate": "2020-07-07"
   },
   {
     "customerId": "7",
     "fullName": "Jessica Brown",
     "email": "jessica.brown7@example.com",
-    "registrationDate": "2021-08-08",
-    "address": "107 Washington Ave, San Diego, NY 10007"
+    "registrationDate": "2021-08-08"
   },
   {
     "customerId": "8",
     "fullName": "Robert Miller",
     "email": "robert.miller8@example.com",
-    "registrationDate": "2022-09-09",
-    "address": "108 Lake Dr, Dallas, NY 10008"
+    "registrationDate": "2022-09-09"
   },
   {
     "customerId": "9",
     "fullName": "Maria Martinez",
     "email": "maria.martinez9@example.com",
-    "registrationDate": "2023-10-10",
-    "address": "109 Hill Rd, Austin, NY 10009"
+    "registrationDate": "2023-10-10"
   },
   {
     "customerId": "10",
     "fullName": "John Williams",
     "email": "john.williams10@example.com",
-    "registrationDate": "2024-11-11",
-    "address": "110 Main St, New York, NY 10010"
+    "registrationDate": "2024-11-11"
   },
   {
     "customerId": "11",
     "fullName": "Jane Brown",
     "email": "jane.brown11@example.com",
-    "registrationDate": "2025-12-12",
-    "address": "111 Oak Ave, Los Angeles, NY 10011"
+    "registrationDate": "2025-12-12"
   },
   {
     "customerId": "12",
     "fullName": "Michael Miller",
     "email": "michael.miller12@example.com",
-    "registrationDate": "2020-01-13",
-    "address": "112 Maple Dr, Chicago, NY 10012"
+    "registrationDate": "2020-01-13"
   },
   {
     "customerId": "13",
     "fullName": "Sarah Martinez",
     "email": "sarah.martinez13@example.com",
-    "registrationDate": "2021-02-14",
-    "address": "113 Park Blvd, Houston, NY 10013"
+    "registrationDate": "2021-02-14"
   },
   {
     "customerId": "14",
     "fullName": "David Williams",
     "email": "david.williams14@example.com",
-    "registrationDate": "2022-03-15",
-    "address": "114 Cedar Ln, Phoenix, NY 10014"
+    "registrationDate": "2022-03-15"
   },
   {
     "customerId": "15",
     "fullName": "Emily Garcia",
     "email": "emily.garcia15@example.com",
-    "registrationDate": "2023-04-16",
-    "address": "115 Pine Rd, Philadelphia, NY 10015"
+    "registrationDate": "2023-04-16"
   },
   {
     "customerId": "16",
     "fullName": "Chris Rodriguez",
     "email": "chris.rodriguez16@example.com",
-    "registrationDate": "2024-05-17",
-    "address": "116 Elm St, San Antonio, NY 10016"
+    "registrationDate": "2024-05-17"
   },
   {
     "customerId": "17",
     "fullName": "Jessica Brown",
     "email": "jessica.brown17@example.com",
-    "registrationDate": "2025-06-18",
-    "address": "117 Washington Ave, San Diego, NY 10017"
+    "registrationDate": "2025-06-18"
   },
   {
     "customerId": "18",
     "fullName": "Robert Miller",
     "email": "robert.miller18@example.com",
-    "registrationDate": "2020-07-19",
-    "address": "118 Lake Dr, Dallas, NY 10018"
+    "registrationDate": "2020-07-19"
   },
   {
     "customerId": "19",
     "fullName": "Maria Martinez",
     "email": "maria.martinez19@example.com",
-    "registrationDate": "2021-08-20",
-    "address": "119 Hill Rd, Austin, NY 10019"
+    "registrationDate": "2021-08-20"
   },
   {
     "customerId": "20",
     "fullName": "John Williams",
     "email": "john.williams20@example.com",
-    "registrationDate": "2022-09-21",
-    "address": "120 Main St, New York, NY 10020"
+    "registrationDate": "2022-09-21"
   },
   {
     "customerId": "21",
     "fullName": "Jane Brown",
     "email": "jane.brown21@example.com",
-    "registrationDate": "2023-10-22",
-    "address": "121 Oak Ave, Los Angeles, NY 10021"
+    "registrationDate": "2023-10-22"
   },
   {
     "customerId": "22",
     "fullName": "Michael Miller",
     "email": "michael.miller22@example.com",
-    "registrationDate": "2024-11-23",
-    "address": "122 Maple Dr, Chicago, NY 10022"
+    "registrationDate": "2024-11-23"
   },
   {
     "customerId": "23",
     "fullName": "Sarah Martinez",
     "email": "sarah.martinez23@example.com",
-    "registrationDate": "2025-12-24",
-    "address": "123 Park Blvd, Houston, NY 10023"
+    "registrationDate": "2025-12-24"
   },
   {
     "customerId": "24",
     "fullName": "David Williams",
     "email": "david.williams24@example.com",
-    "registrationDate": "2020-01-25",
-    "address": "124 Cedar Ln, Phoenix, NY 10024"
+    "registrationDate": "2020-01-25"
   },
   {
     "customerId": "25",
     "fullName": "Emily Garcia",
     "email": "emily.garcia25@example.com",
-    "registrationDate": "2021-02-26",
-    "address": "125 Pine Rd, Philadelphia, NY 10025"
+    "registrationDate": "2021-02-26"
   },
   {
     "customerId": "26",
     "fullName": "Chris Rodriguez",
     "email": "chris.rodriguez26@example.com",
-    "registrationDate": "2022-03-27",
-    "address": "126 Elm St, San Antonio, NY 10026"
+    "registrationDate": "2022-03-27"
   },
   {
     "customerId": "27",
     "fullName": "Jessica Brown",
     "email": "jessica.brown27@example.com",
-    "registrationDate": "2023-04-28",
-    "address": "127 Washington Ave, San Diego, NY 10027"
+    "registrationDate": "2023-04-28"
   },
   {
     "customerId": "28",
     "fullName": "Robert Miller",
     "email": "robert.miller28@example.com",
-    "registrationDate": "2024-05-01",
-    "address": "128 Lake Dr, Dallas, NY 10028"
+    "registrationDate": "2024-05-01"
   },
   {
     "customerId": "29",
     "fullName": "Maria Martinez",
     "email": "maria.martinez29@example.com",
-    "registrationDate": "2025-06-02",
-    "address": "129 Hill Rd, Austin, NY 10029"
+    "registrationDate": "2025-06-02"
   },
   {
     "customerId": "30",
     "fullName": "John Williams",
     "email": "john.williams30@example.com",
-    "registrationDate": "2020-07-03",
-    "address": "130 Main St, New York, NY 10030"
+    "registrationDate": "2020-07-03"
   },
   {
     "customerId": "31",
     "fullName": "Jane Brown",
     "email": "jane.brown31@example.com",
-    "registrationDate": "2021-08-04",
-    "address": "131 Oak Ave, Los Angeles, NY 10031"
+    "registrationDate": "2021-08-04"
   },
   {
     "customerId": "32",
     "fullName": "Michael Miller",
     "email": "michael.miller32@example.com",
-    "registrationDate": "2022-09-05",
-    "address": "132 Maple Dr, Chicago, NY 10032"
+    "registrationDate": "2022-09-05"
   },
   {
     "customerId": "33",
     "fullName": "Sarah Martinez",
     "email": "sarah.martinez33@example.com",
-    "registrationDate": "2023-10-06",
-    "address": "133 Park Blvd, Houston, NY 10033"
+    "registrationDate": "2023-10-06"
   },
   {
     "customerId": "34",
     "fullName": "David Williams",
     "email": "david.williams34@example.com",
-    "registrationDate": "2024-11-07",
-    "address": "134 Cedar Ln, Phoenix, NY 10034"
+    "registrationDate": "2024-11-07"
   },
   {
     "customerId": "35",
     "fullName": "Emily Garcia",
     "email": "emily.garcia35@example.com",
-    "registrationDate": "2025-12-08",
-    "address": "135 Pine Rd, Philadelphia, NY 10035"
+    "registrationDate": "2025-12-08"
   },
   {
     "customerId": "36",
     "fullName": "Chris Rodriguez",
     "email": "chris.rodriguez36@example.com",
-    "registrationDate": "2020-01-09",
-    "address": "136 Elm St, San Antonio, NY 10036"
+    "registrationDate": "2020-01-09"
   },
   {
     "customerId": "37",
     "fullName": "Jessica Brown",
     "email": "jessica.brown37@example.com",
-    "registrationDate": "2021-02-10",
-    "address": "137 Washington Ave, San Diego, NY 10037"
+    "registrationDate": "2021-02-10"
   },
   {
     "customerId": "38",
     "fullName": "Robert Miller",
     "email": "robert.miller38@example.com",
-    "registrationDate": "2022-03-11",
-    "address": "138 Lake Dr, Dallas, NY 10038"
+    "registrationDate": "2022-03-11"
   },
   {
     "customerId": "39",
     "fullName": "Maria Martinez",
     "email": "maria.martinez39@example.com",
-    "registrationDate": "2023-04-12",
-    "address": "139 Hill Rd, Austin, NY 10039"
+    "registrationDate": "2023-04-12"
   },
   {
     "customerId": "40",
     "fullName": "John Williams",
     "email": "john.williams40@example.com",
-    "registrationDate": "2024-05-13",
-    "address": "140 Main St, New York, NY 10040"
+    "registrationDate": "2024-05-13"
   },
   {
     "customerId": "41",
     "fullName": "Jane Brown",
     "email": "jane.brown41@example.com",
-    "registrationDate": "2025-06-14",
-    "address": "141 Oak Ave, Los Angeles, NY 10041"
+    "registrationDate": "2025-06-14"
   },
   {
     "customerId": "42",
     "fullName": "Michael Miller",
     "email": "michael.miller42@example.com",
-    "registrationDate": "2020-07-15",
-    "address": "142 Maple Dr, Chicago, NY 10042"
+    "registrationDate": "2020-07-15"
   },
   {
     "customerId": "43",
     "fullName": "Sarah Martinez",
     "email": "sarah.martinez43@example.com",
-    "registrationDate": "2021-08-16",
-    "address": "143 Park Blvd, Houston, NY 10043"
+    "registrationDate": "2021-08-16"
   },
   {
     "customerId": "44",
     "fullName": "David Williams",
     "email": "david.williams44@example.com",
-    "registrationDate": "2022-09-17",
-    "address": "144 Cedar Ln, Phoenix, NY 10044"
+    "registrationDate": "2022-09-17"
   },
   {
     "customerId": "45",
     "fullName": "Emily Garcia",
     "email": "emily.garcia45@example.com",
-    "registrationDate": "2023-10-18",
-    "address": "145 Pine Rd, Philadelphia, NY 10045"
+    "registrationDate": "2023-10-18"
   },
   {
     "customerId": "46",
     "fullName": "Chris Rodriguez",
     "email": "chris.rodriguez46@example.com",
-    "registrationDate": "2024-11-19",
-    "address": "146 Elm St, San Antonio, NY 10046"
+    "registrationDate": "2024-11-19"
   },
   {
     "customerId": "47",
     "fullName": "Jessica Brown",
     "email": "jessica.brown47@example.com",
-    "registrationDate": "2025-12-20",
-    "address": "147 Washington Ave, San Diego, NY 10047"
+    "registrationDate": "2025-12-20"
   },
   {
     "customerId": "48",
     "fullName": "Robert Miller",
     "email": "robert.miller48@example.com",
-    "registrationDate": "2020-01-21",
-    "address": "148 Lake Dr, Dallas, NY 10048"
+    "registrationDate": "2020-01-21"
   },
   {
     "customerId": "49",
     "fullName": "Maria Martinez",
     "email": "maria.martinez49@example.com",
-    "registrationDate": "2021-02-22",
-    "address": "149 Hill Rd, Austin, NY 10049"
+    "registrationDate": "2021-02-22"
   },
   {
     "customerId": "50",
     "fullName": "John Williams",
     "email": "john.williams50@example.com",
-    "registrationDate": "2022-03-23",
-    "address": "150 Main St, New York, NY 10050"
+    "registrationDate": "2022-03-23"
   },
   {
     "customerId": "51",
     "fullName": "Jane Brown",
     "email": "jane.brown51@example.com",
-    "registrationDate": "2023-04-24",
-    "address": "151 Oak Ave, Los Angeles, NY 10051"
+    "registrationDate": "2023-04-24"
   },
   {
     "customerId": "52",
     "fullName": "Michael Miller",
     "email": "michael.miller52@example.com",
-    "registrationDate": "2024-05-25",
-    "address": "152 Maple Dr, Chicago, NY 10052"
+    "registrationDate": "2024-05-25"
   },
   {
     "customerId": "53",
     "fullName": "Sarah Martinez",
     "email": "sarah.martinez53@example.com",
-    "registrationDate": "2025-06-26",
-    "address": "153 Park Blvd, Houston, NY 10053"
+    "registrationDate": "2025-06-26"
   },
   {
     "customerId": "54",
     "fullName": "David Williams",
     "email": "david.williams54@example.com",
-    "registrationDate": "2020-07-27",
-    "address": "154 Cedar Ln, Phoenix, NY 10054"
+    "registrationDate": "2020-07-27"
   },
   {
     "customerId": "55",
     "fullName": "Emily Garcia",
     "email": "emily.garcia55@example.com",
-    "registrationDate": "2021-08-28",
-    "address": "155 Pine Rd, Philadelphia, NY 10055"
+    "registrationDate": "2021-08-28"
   },
   {
     "customerId": "56",
     "fullName": "Chris Rodriguez",
     "email": "chris.rodriguez56@example.com",
-    "registrationDate": "2022-09-01",
-    "address": "156 Elm St, San Antonio, NY 10056"
+    "registrationDate": "2022-09-01"
   },
   {
     "customerId": "57",
     "fullName": "Jessica Brown",
     "email": "jessica.brown57@example.com",
-    "registrationDate": "2023-10-02",
-    "address": "157 Washington Ave, San Diego, NY 10057"
+    "registrationDate": "2023-10-02"
   },
   {
     "customerId": "58",
     "fullName": "Robert Miller",
     "email": "robert.miller58@example.com",
-    "registrationDate": "2024-11-03",
-    "address": "158 Lake Dr, Dallas, NY 10058"
+    "registrationDate": "2024-11-03"
   },
   {
     "customerId": "59",
     "fullName": "Maria Martinez",
     "email": "maria.martinez59@example.com",
-    "registrationDate": "2025-12-04",
-    "address": "159 Hill Rd, Austin, NY 10059"
+    "registrationDate": "2025-12-04"
   },
   {
     "customerId": "60",
     "fullName": "John Williams",
     "email": "john.williams60@example.com",
-    "registrationDate": "2020-01-05",
-    "address": "160 Main St, New York, NY 10060"
+    "registrationDate": "2020-01-05"
   },
   {
     "customerId": "61",
     "fullName": "Jane Brown",
     "email": "jane.brown61@example.com",
-    "registrationDate": "2021-02-06",
-    "address": "161 Oak Ave, Los Angeles, NY 10061"
+    "registrationDate": "2021-02-06"
   },
   {
     "customerId": "62",
     "fullName": "Michael Miller",
     "email": "michael.miller62@example.com",
-    "registrationDate": "2022-03-07",
-    "address": "162 Maple Dr, Chicago, NY 10062"
+    "registrationDate": "2022-03-07"
   },
   {
     "customerId": "63",
     "fullName": "Sarah Martinez",
     "email": "sarah.martinez63@example.com",
-    "registrationDate": "2023-04-08",
-    "address": "163 Park Blvd, Houston, NY 10063"
+    "registrationDate": "2023-04-08"
   },
   {
     "customerId": "64",
     "fullName": "David Williams",
     "email": "david.williams64@example.com",
-    "registrationDate": "2024-05-09",
-    "address": "164 Cedar Ln, Phoenix, NY 10064"
+    "registrationDate": "2024-05-09"
   },
   {
     "customerId": "65",
     "fullName": "Emily Garcia",
     "email": "emily.garcia65@example.com",
-    "registrationDate": "2025-06-10",
-    "address": "165 Pine Rd, Philadelphia, NY 10065"
+    "registrationDate": "2025-06-10"
   },
   {
     "customerId": "66",
     "fullName": "Chris Rodriguez",
     "email": "chris.rodriguez66@example.com",
-    "registrationDate": "2020-07-11",
-    "address": "166 Elm St, San Antonio, NY 10066"
+    "registrationDate": "2020-07-11"
   },
   {
     "customerId": "67",
     "fullName": "Jessica Brown",
     "email": "jessica.brown67@example.com",
-    "registrationDate": "2021-08-12",
-    "address": "167 Washington Ave, San Diego, NY 10067"
+    "registrationDate": "2021-08-12"
   },
   {
     "customerId": "68",
     "fullName": "Robert Miller",
     "email": "robert.miller68@example.com",
-    "registrationDate": "2022-09-13",
-    "address": "168 Lake Dr, Dallas, NY 10068"
+    "registrationDate": "2022-09-13"
   },
   {
     "customerId": "69",
     "fullName": "Maria Martinez",
     "email": "maria.martinez69@example.com",
-    "registrationDate": "2023-10-14",
-    "address": "169 Hill Rd, Austin, NY 10069"
+    "registrationDate": "2023-10-14"
   },
   {
     "customerId": "70",
     "fullName": "John Williams",
     "email": "john.williams70@example.com",
-    "registrationDate": "2024-11-15",
-    "address": "170 Main St, New York, NY 10070"
+    "registrationDate": "2024-11-15"
   },
   {
     "customerId": "71",
     "fullName": "Jane Brown",
     "email": "jane.brown71@example.com",
-    "registrationDate": "2025-12-16",
-    "address": "171 Oak Ave, Los Angeles, NY 10071"
+    "registrationDate": "2025-12-16"
   },
   {
     "customerId": "72",
     "fullName": "Michael Miller",
     "email": "michael.miller72@example.com",
-    "registrationDate": "2020-01-17",
-    "address": "172 Maple Dr, Chicago, NY 10072"
+    "registrationDate": "2020-01-17"
   },
   {
     "customerId": "73",
     "fullName": "Sarah Martinez",
     "email": "sarah.martinez73@example.com",
-    "registrationDate": "2021-02-18",
-    "address": "173 Park Blvd, Houston, NY 10073"
+    "registrationDate": "2021-02-18"
   },
   {
     "customerId": "74",
     "fullName": "David Williams",
     "email": "david.williams74@example.com",
-    "registrationDate": "2022-03-19",
-    "address": "174 Cedar Ln, Phoenix, NY 10074"
+    "registrationDate": "2022-03-19"
   },
   {
     "customerId": "75",
     "fullName": "Emily Garcia",
     "email": "emily.garcia75@example.com",
-    "registrationDate": "2023-04-20",
-    "address": "175 Pine Rd, Philadelphia, NY 10075"
+    "registrationDate": "2023-04-20"
   },
   {
     "customerId": "76",
     "fullName": "Chris Rodriguez",
     "email": "chris.rodriguez76@example.com",
-    "registrationDate": "2024-05-21",
-    "address": "176 Elm St, San Antonio, NY 10076"
+    "registrationDate": "2024-05-21"
   },
   {
     "customerId": "77",
     "fullName": "Jessica Brown",
     "email": "jessica.brown77@example.com",
-    "registrationDate": "2025-06-22",
-    "address": "177 Washington Ave, San Diego, NY 10077"
+    "registrationDate": "2025-06-22"
   },
   {
     "customerId": "78",
     "fullName": "Robert Miller",
     "email": "robert.miller78@example.com",
-    "registrationDate": "2020-07-23",
-    "address": "178 Lake Dr, Dallas, NY 10078"
+    "registrationDate": "2020-07-23"
   },
   {
     "customerId": "79",
     "fullName": "Maria Martinez",
     "email": "maria.martinez79@example.com",
-    "registrationDate": "2021-08-24",
-    "address": "179 Hill Rd, Austin, NY 10079"
+    "registrationDate": "2021-08-24"
   },
   {
     "customerId": "80",
     "fullName": "John Williams",
     "email": "john.williams80@example.com",
-    "registrationDate": "2022-09-25",
-    "address": "180 Main St, New York, NY 10080"
+    "registrationDate": "2022-09-25"
   },
   {
     "customerId": "81",
     "fullName": "Jane Brown",
     "email": "jane.brown81@example.com",
-    "registrationDate": "2023-10-26",
-    "address": "181 Oak Ave, Los Angeles, NY 10081"
+    "registrationDate": "2023-10-26"
   },
   {
     "customerId": "82",
     "fullName": "Michael Miller",
     "email": "michael.miller82@example.com",
-    "registrationDate": "2024-11-27",
-    "address": "182 Maple Dr, Chicago, NY 10082"
+    "registrationDate": "2024-11-27"
   },
   {
     "customerId": "83",
     "fullName": "Sarah Martinez",
     "email": "sarah.martinez83@example.com",
-    "registrationDate": "2025-12-28",
-    "address": "183 Park Blvd, Houston, NY 10083"
+    "registrationDate": "2025-12-28"
   },
   {
     "customerId": "84",
     "fullName": "David Williams",
     "email": "david.williams84@example.com",
-    "registrationDate": "2020-01-01",
-    "address": "184 Cedar Ln, Phoenix, NY 10084"
+    "registrationDate": "2020-01-01"
   },
   {
     "customerId": "85",
     "fullName": "Emily Garcia",
     "email": "emily.garcia85@example.com",
-    "registrationDate": "2021-02-02",
-    "address": "185 Pine Rd, Philadelphia, NY 10085"
+    "registrationDate": "2021-02-02"
   },
   {
     "customerId": "86",
     "fullName": "Chris Rodriguez",
     "email": "chris.rodriguez86@example.com",
-    "registrationDate": "2022-03-03",
-    "address": "186 Elm St, San Antonio, NY 10086"
+    "registrationDate": "2022-03-03"
   },
   {
     "customerId": "87",
     "fullName": "Jessica Brown",
     "email": "jessica.brown87@example.com",
-    "registrationDate": "2023-04-04",
-    "address": "187 Washington Ave, San Diego, NY 10087"
+    "registrationDate": "2023-04-04"
   },
   {
     "customerId": "88",
     "fullName": "Robert Miller",
     "email": "robert.miller88@example.com",
-    "registrationDate": "2024-05-05",
-    "address": "188 Lake Dr, Dallas, NY 10088"
+    "registrationDate": "2024-05-05"
   },
   {
     "customerId": "89",
     "fullName": "Maria Martinez",
     "email": "maria.martinez89@example.com",
-    "registrationDate": "2025-06-06",
-    "address": "189 Hill Rd, Austin, NY 10089"
+    "registrationDate": "2025-06-06"
   },
   {
     "customerId": "90",
     "fullName": "John Williams",
     "email": "john.williams90@example.com",
-    "registrationDate": "2020-07-07",
-    "address": "190 Main St, New York, NY 10090"
+    "registrationDate": "2020-07-07"
   },
   {
     "customerId": "91",
     "fullName": "Jane Brown",
     "email": "jane.brown91@example.com",
-    "registrationDate": "2021-08-08",
-    "address": "191 Oak Ave, Los Angeles, NY 10091"
+    "registrationDate": "2021-08-08"
   },
   {
     "customerId": "92",
     "fullName": "Michael Miller",
     "email": "michael.miller92@example.com",
-    "registrationDate": "2022-09-09",
-    "address": "192 Maple Dr, Chicago, NY 10092"
+    "registrationDate": "2022-09-09"
   },
   {
     "customerId": "93",
     "fullName": "Sarah Martinez",
     "email": "sarah.martinez93@example.com",
-    "registrationDate": "2023-10-10",
-    "address": "193 Park Blvd, Houston, NY 10093"
+    "registrationDate": "2023-10-10"
   },
   {
     "customerId": "94",
     "fullName": "David Williams",
     "email": "david.williams94@example.com",
-    "registrationDate": "2024-11-11",
-    "address": "194 Cedar Ln, Phoenix, NY 10094"
+    "registrationDate": "2024-11-11"
   },
   {
     "customerId": "95",
     "fullName": "Emily Garcia",
     "email": "emily.garcia95@example.com",
-    "registrationDate": "2025-12-12",
-    "address": "195 Pine Rd, Philadelphia, NY 10095"
+    "registrationDate": "2025-12-12"
   },
   {
     "customerId": "96",
     "fullName": "Chris Rodriguez",
     "email": "chris.rodriguez96@example.com",
-    "registrationDate": "2020-01-13",
-    "address": "196 Elm St, San Antonio, NY 10096"
+    "registrationDate": "2020-01-13"
   },
   {
     "customerId": "97",
     "fullName": "Jessica Brown",
     "email": "jessica.brown97@example.com",
-    "registrationDate": "2021-02-14",
-    "address": "197 Washington Ave, San Diego, NY 10097"
+    "registrationDate": "2021-02-14"
   },
   {
     "customerId": "98",
     "fullName": "Robert Miller",
     "email": "robert.miller98@example.com",
-    "registrationDate": "2022-03-15",
-    "address": "198 Lake Dr, Dallas, NY 10098"
+    "registrationDate": "2022-03-15"
   },
   {
     "customerId": "99",
     "fullName": "Maria Martinez",
     "email": "maria.martinez99@example.com",
-    "registrationDate": "2023-04-16",
-    "address": "199 Hill Rd, Austin, NY 10099"
+    "registrationDate": "2023-04-16"
   },
   {
     "customerId": "100",
     "fullName": "John Williams",
     "email": "john.williams100@example.com",
-    "registrationDate": "2024-05-17",
-    "address": "200 Main St, New York, NY 10100"
+    "registrationDate": "2024-05-17"
   }
 ]

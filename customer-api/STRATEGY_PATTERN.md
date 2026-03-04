@@ -214,8 +214,6 @@ export class RDSCustomerDataSource implements CustomerDataSource {
 
 ## Running Tests
 
-The existing tests should still work. The old `CustomerRepository` class is still available for backward compatibility if needed.
-
 ```bash
 npm test
 ```
@@ -239,8 +237,7 @@ src/
 │   └── CustomerDataSource.ts    # Strategy interface
 ├── repositories/
 │   ├── RDSCustomerDataSource.ts        # RDS implementation
-│   ├── MockCustomerDataSource.ts       # Mock implementation
-│   └── customerRepository.ts           # Legacy (deprecated)
+│   └── MockCustomerDataSource.ts       # Mock implementation
 ├── services/
 │   └── CustomerService.ts       # Business logic layer
 ├── utilities/

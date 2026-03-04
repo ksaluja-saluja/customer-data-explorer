@@ -3,7 +3,6 @@ export interface Customer {
   fullName: string;
   email: string;
   registrationDate: string;
-  address: string;
 }
 
 export interface CustomerPage {

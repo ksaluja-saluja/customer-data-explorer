@@ -54,7 +54,7 @@ export class RDSCustomerDataSource implements CustomerDataSource {
   async getCustomers(start: number, max: number): Promise<Customer[]> {
     Logger.info("Fetching customers from database", { start, max });
     
-    const query = `SELECT customer_id, full_name, email, registration_date, address
+    const query = `SELECT customer_id, full_name, email, registration_date
       FROM customers
       ORDER BY customer_id
       LIMIT :max OFFSET :start`;
@@ -78,7 +78,6 @@ export class RDSCustomerDataSource implements CustomerDataSource {
           fullName: record[1].stringValue || "",
           email: record[2].stringValue || "",
           registrationDate: record[3].stringValue || "",
-          address: record[4].stringValue || "",
         } as Customer))
       : [];
 
