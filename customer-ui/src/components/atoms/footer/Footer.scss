@@ -1,17 +1,19 @@
-@use "../../../styles/breakpoints" as *;
+@use "../../../styles/1-settings/colors" as colors;
+@use "../../../styles/1-settings/spacing" as spacing;
+@use "../../../styles/1-settings/typography" as typography;
 
-.app-footer {
+.c-app-footer {
   text-align: center;
-  padding: 1rem;
-  font-size: 0.9rem;
-  background-color: #fff;
+  padding: spacing.$spacing-xl;
+  font-size: typography.$font-size-small;
+  background-color: colors.$color-white;
   position: relative;
   z-index: 10;
 }
 
 @container page (max-width: 767px) {
-  .app-footer {
-    padding: 0.75rem;
+  .c-app-footer {
+    padding: spacing.$spacing-lg;
     font-size: 0.8rem;
   }
 }

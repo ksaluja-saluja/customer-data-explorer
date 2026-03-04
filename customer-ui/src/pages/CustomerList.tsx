@@ -2,7 +2,7 @@ import { useMemo, useState, useEffect } from "react";
 import { useAppDispatch, useAppSelector } from "../redux/hooks";
 import { getCustomerPage } from "../redux/slices/customerPageSlice";
 import Table from "../components/atoms/table/Table";
-import Pagination from "../components/atoms/pagination/Pagination";
+import Pagination from "../components/molecules/pagination/Pagination";
 import Layout from "../components/templates/Layout";
 import type { CustomerRow } from "../models/CustomerRow";
 import "./CustomerList.scss";
@@ -120,7 +120,7 @@ function CustomerList() {
 
   return (
     <Layout title="Customer data explorer">
-      <div className="table-section">
+      <div className="c-table-section">
         {loading && currentPage === 1 ? (
           <p>Loading customers...</p>
         ) : error ? (
@@ -131,7 +131,7 @@ function CustomerList() {
               columns={customerColumns}
               columnLabels={customerColumnLabels}
               data={displayData}
-              className="data-table"
+              className="c-table"
               idKey="customerId"
             />
             {!isMobile && (
@@ -142,7 +142,9 @@ function CustomerList() {
               />
             )}
             {isMobile && isLoadingMore && (
-              <p className="loading-indicator">Loading more records...</p>
+              <p className="c-table-section__loading-indicator">
+                Loading more records...
+              </p>
             )}
           </>
         )}

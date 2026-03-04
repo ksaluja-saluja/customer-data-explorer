@@ -1,0 +1,10 @@
+// ============================================================================
+// Generic Layer
+// ============================================================================
+//
+// Reset, normalize, and base element styles
+// This layer produces CSS, but only for bare HTML elements
+//
+
+@use "normalize";
+@use "base-elements";

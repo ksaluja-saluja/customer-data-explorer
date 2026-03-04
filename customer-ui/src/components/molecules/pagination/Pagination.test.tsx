@@ -132,16 +132,16 @@ describe("Pagination Component", () => {
     expect(onPageChange).toHaveBeenCalledWith(2);
   });
 
-  it("should mark current page button as active", () => {
+  it("should mark current page button as primary variant", () => {
     render(
       <Pagination currentPage={2} totalPages={3} onPageChange={() => {}} />,
     );
 
     const page2Button = screen.getByRole("button", { name: "2" });
-    expect(page2Button.className).toContain("active");
+    expect(page2Button.className).toContain("button--primary");
   });
 
-  it("should not mark non-current page buttons as active", () => {
+  it("should not mark non-current page buttons as primary variant", () => {
     render(
       <Pagination currentPage={2} totalPages={3} onPageChange={() => {}} />,
     );
@@ -149,7 +149,7 @@ describe("Pagination Component", () => {
     const page1Button = screen.getByRole("button", { name: "1" });
     const page3Button = screen.getByRole("button", { name: "3" });
 
-    expect(page1Button.className).not.toContain("active");
-    expect(page3Button.className).not.toContain("active");
+    expect(page1Button.className).not.toContain("button--primary");
+    expect(page3Button.className).not.toContain("button--primary");
   });
 });

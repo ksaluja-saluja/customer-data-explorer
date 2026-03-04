@@ -1,0 +1,44 @@
+// ============================================================================
+// Layout Objects
+// ============================================================================
+//
+// Layout patterns and container structures
+// Objects are non-cosmetic and re-usable design patterns
+//
+
+@use "../1-settings/spacing" as spacing;
+@use "../1-settings/sizing" as sizing;
+@use "../2-tools/responsive" as responsive;
+
+.o-container {
+  max-width: sizing.$max-width-container;
+  margin-left: auto;
+  margin-right: auto;
+  padding-left: spacing.$spacing-xl;
+  padding-right: spacing.$spacing-xl;
+  width: 100%;
+}
+
+.o-flex {
+  display: flex;
+
+  &--column {
+    flex-direction: column;
+  }
+
+  &--center {
+    align-items: center;
+  }
+
+  &--gap-lg {
+    gap: spacing.$spacing-lg;
+  }
+
+  &--gap-xl {
+    gap: spacing.$spacing-xl;
+  }
+}
+
+.o-viewport-min-height {
+  min-height: sizing.$min-height-viewport;
+}

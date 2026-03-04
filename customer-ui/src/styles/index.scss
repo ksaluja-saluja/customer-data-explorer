@@ -1,0 +1,30 @@
+// ============================================================================
+// Styles Entry Point
+// ============================================================================
+//
+// Main stylesheet that imports all layers in ITCSS order:
+// 1. Settings   - Variables and configuration
+// 2. Tools      - Mixins and functions
+// 3. Generic    - Resets and normalize
+// 4. Objects    - Layout patterns
+// 5. Components - UI components (managed separately by components)
+// 6. Trumps     - Utilities and overrides
+//
+
+// 1. Settings
+@use "./1-settings/index" as settings;
+
+// 2. Tools
+@use "./2-tools/index" as tools;
+
+// 3. Generic
+@use "./3-generic/index" as generic;
+
+// 4. Objects
+@use "./4-objects/index" as objects;
+
+// 5. Components
+// Components are imported directly at the component level to maintain modularity
+
+// 6. Trumps
+@use "./5-trumps/index" as trumps;

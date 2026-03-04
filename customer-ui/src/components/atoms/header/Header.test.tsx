@@ -33,18 +33,18 @@ describe('Header Component', () => {
     render(<Header title="Test Title" />);
     const logoImage = screen.getByAltText('React logo');
     expect(logoImage).toBeTruthy();
-    expect(logoImage.className).toBe('header-logo');
+    expect(logoImage.className).toBe('app-header__logo');
   });
 
   it('should render header brand container', () => {
     const { container } = render(<Header title="Test Title" />);
-    const brandDiv = container.querySelector('.header-brand');
+    const brandDiv = container.querySelector('.app-header__brand');
     expect(brandDiv).toBeTruthy();
   });
 
   it('should have header-title class on the h1', () => {
     render(<Header title="Test Title" />);
     const h1Element = screen.getByRole('heading', { level: 1 });
-    expect(h1Element.className).toBe('header-title');
+    expect(h1Element.className).toBe('app-header__title');
   });
 });

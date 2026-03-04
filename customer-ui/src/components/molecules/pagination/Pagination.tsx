@@ -1,3 +1,4 @@
+import Button from "../../atoms/button/Button";
 import "./Pagination.scss";
 
 type PaginationProps = {
@@ -6,7 +7,11 @@ type PaginationProps = {
   onPageChange: (page: number) => void;
 };
 
-function Pagination({ currentPage, totalPages, onPageChange }: PaginationProps) {
+function Pagination({
+  currentPage,
+  totalPages,
+  onPageChange,
+}: PaginationProps) {
   if (totalPages <= 1) {
     return null;
   }
@@ -14,35 +19,33 @@ function Pagination({ currentPage, totalPages, onPageChange }: PaginationProps) 
   const pages = Array.from({ length: totalPages }, (_, index) => index + 1);
 
   return (
-    <nav className="pagination" aria-label="Table pagination">
-      <button
+    <nav className="c-pagination" aria-label="Table pagination">
+      <Button
         type="button"
-        className="pagination-button"
         onClick={() => onPageChange(currentPage - 1)}
         disabled={currentPage === 1}
       >
         Previous
-      </button>
+      </Button>
 
       {pages.map((page) => (
-        <button
+        <Button
           key={page}
           type="button"
-          className={`pagination-button ${page === currentPage ? "active" : ""}`}
+          variant={page === currentPage ? "primary" : "secondary"}
           onClick={() => onPageChange(page)}
         >
           {page}
-        </button>
+        </Button>
       ))}
 
-      <button
+      <Button
         type="button"
-        className="pagination-button"
         onClick={() => onPageChange(currentPage + 1)}
         disabled={currentPage === totalPages}
       >
         Next
-      </button>
+      </Button>
     </nav>
   );
 }

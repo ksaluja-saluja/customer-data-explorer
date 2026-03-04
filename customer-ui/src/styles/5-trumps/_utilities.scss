@@ -1,0 +1,69 @@
+// ============================================================================
+// Utility Classes
+// ============================================================================
+//
+// Low-level utility classes for quick fixes and adjustments
+// These may use !important as they are the highest specificity layer
+//
+
+@use "../1-settings/spacing" as spacing;
+@use "../1-settings/colors" as colors;
+
+// Display utilities
+.u-hidden {
+  display: none !important;
+}
+
+.u-invisible {
+  visibility: hidden !important;
+}
+
+// Spacing utilities
+.u-margin-0 {
+  margin: 0 !important;
+}
+
+.u-padding-0 {
+  padding: 0 !important;
+}
+
+// Opacity utilities
+.u-opacity-50 {
+  opacity: 0.5 !important;
+}
+
+.u-opacity-disabled {
+  opacity: 0.5 !important;
+  cursor: not-allowed !important;
+}
+
+// Cursor utilities
+.u-cursor-pointer {
+  cursor: pointer !important;
+}
+
+.u-cursor-not-allowed {
+  cursor: not-allowed !important;
+}
+
+// Text utilities
+.u-text-center {
+  text-align: center !important;
+}
+
+.u-text-left {
+  text-align: left !important;
+}
+
+.u-text-inherit {
+  text-decoration: inherit !important;
+}
+
+// Flexibility
+.u-width-full {
+  width: 100% !important;
+}
+
+.u-height-full {
+  height: 100% !important;
+}
