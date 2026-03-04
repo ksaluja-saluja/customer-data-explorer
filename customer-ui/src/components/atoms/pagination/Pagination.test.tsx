@@ -133,7 +133,7 @@ describe("Pagination Component", () => {
   });
 
   it("should mark current page button as active", () => {
-    const { container } = render(
+    render(
       <Pagination currentPage={2} totalPages={3} onPageChange={() => {}} />,
     );
 
@@ -142,7 +142,7 @@ describe("Pagination Component", () => {
   });
 
   it("should not mark non-current page buttons as active", () => {
-    const { container } = render(
+    render(
       <Pagination currentPage={2} totalPages={3} onPageChange={() => {}} />,
     );
 
