@@ -1,0 +1,22 @@
+@use "../styles/breakpoints" as *;
+
+.table-section {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  align-items: center;
+  width: 100%;
+  max-width: 1200px;
+}
+
+@media (max-width: $mobile-max) {
+  .table-section {
+    gap: 0.75rem;
+  }
+}
+
+@media (min-width: $desktop-min) {
+  .table-section {
+    max-width: 1100px;
+  }
+}

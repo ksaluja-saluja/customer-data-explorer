@@ -1,0 +1,44 @@
+@use "../../../styles/breakpoints" as *;
+
+.pagination {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.pagination-button {
+  border: 1px solid #ddd;
+  background: #fff;
+  padding: 0.4rem 0.7rem;
+  border-radius: 6px;
+  cursor: pointer;
+}
+
+.pagination-button:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+.pagination-button.active {
+  background: #f1f1f1;
+  font-weight: 600;
+}
+
+@media (max-width: $mobile-max) {
+  .pagination {
+    gap: 0.4rem;
+  }
+
+  .pagination-button {
+    padding: 0.3rem 0.55rem;
+    font-size: 0.85rem;
+  }
+}
+
+@media (min-width: $tablet-min) and (max-width: $tablet-max) {
+  .pagination-button {
+    padding: 0.35rem 0.65rem;
+  }
+}

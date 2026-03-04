@@ -1,5 +1,6 @@
-import Header from "../atoms/Header";
-import Footer from "../atoms/Footer";
+import Header from "../atoms/header/Header";
+import Footer from "../atoms/footer/Footer";
+import "./Layout.scss";
 
 type LayoutProps = {
   title: string;

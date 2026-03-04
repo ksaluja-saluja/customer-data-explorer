@@ -1,10 +1,11 @@
 import { useMemo, useState } from "react";
 import { getAPI } from "../api/getAPI";
-import Table from "../components/atoms/Table";
-import Pagination from "../components/atoms/Pagination";
+import Table from "../components/atoms/table/Table";
+import Pagination from "../components/atoms/pagination/Pagination";
 import useApi from "../hooks/useApi";
 import Layout from "../components/templates/Layout";
 import type { CustomerRow } from "../models/CustomerRow";
+import "./CustomerList.scss";
 
 const customerColumns: Array<keyof CustomerRow> = [
   "customerId",

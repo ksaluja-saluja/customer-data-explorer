@@ -1,0 +1,14 @@
+@use "../../../styles/breakpoints" as *;
+
+.app-footer {
+  text-align: center;
+  padding: 1rem;
+  font-size: 0.9rem;
+}
+
+@media (max-width: $mobile-max) {
+  .app-footer {
+    padding: 0.75rem;
+    font-size: 0.8rem;
+  }
+}

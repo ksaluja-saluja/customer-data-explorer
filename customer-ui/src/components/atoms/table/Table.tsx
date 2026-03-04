@@ -1,3 +1,5 @@
+import "./Table.scss";
+
 type TableCellValue = string | number | null | undefined;
 
 type TableProps<T extends object> = {
@@ -40,7 +42,10 @@ function Table<T extends object>({
           return (
             <tr key={rowId}>
               {columns.map((column) => (
-                <td key={`${rowId}-${String(column)}`}>
+                <td
+                  key={`${rowId}-${String(column)}`}
+                  data-label={columnLabels?.[column] ?? String(column)}
+                >
                   {formatCellValue(row[column] as TableCellValue)}
                 </td>
               ))}

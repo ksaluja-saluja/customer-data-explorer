@@ -1,3 +1,5 @@
+import "./Pagination.scss";
+
 type PaginationProps = {
   currentPage: number;
   totalPages: number;
