@@ -1,15 +1,25 @@
 import { getConfig } from "../config";
 import type { CustomerRow } from "../models/CustomerRow";
 
-export async function getAPI(): Promise<CustomerRow[]> {
+export interface CustomerPageResponse {
+  customers: CustomerRow[];
+  lastCustomerId: string | null;
+  totalCustomers: number;
+}
+
+export async function getAPI(start: number = 0, max: number = 10): Promise<CustomerPageResponse> {
   const config = getConfig();
-  const url = `${config.apiBaseUrl}${config.customerApiEndpoint}`;
+  const url = new URL(`${config.apiBaseUrl}${config.customerApiEndpoint}`);
   
-  const response = await fetch(url);
+  // Add query parameters
+  url.searchParams.append('start', start.toString());
+  url.searchParams.append('max', max.toString());
+  
+  const response = await fetch(url.toString());
 
   if (!response.ok) {
     throw new Error("Failed to fetch customer data");
   }
 
-  return response.json() as Promise<CustomerRow[]>;
+  return response.json() as Promise<CustomerPageResponse>;
 }

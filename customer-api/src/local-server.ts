@@ -1,6 +1,7 @@
 import express, { Request, Response } from 'express';
 import { APIGatewayProxyEvent, Context } from 'aws-lambda';
 import { handler } from './main';
+import { CorsUti } from './utilities/cors';
 
 // Set default data source to mock for local development
 // Override by setting DATA_SOURCE=rds in environment
@@ -13,6 +14,26 @@ const PORT = process.env.PORT || 3000;
 
 // Middleware to parse JSON bodies
 app.use(express.json());
+
+// CORS middleware
+app.use((req: Request, res: Response, next) => {
+  const origin = req.get('origin') || '';
+  const corsHeaders = CorsUti.getCorsHeaders(origin);
+  
+  if (corsHeaders) {
+    Object.entries(corsHeaders).forEach(([key, value]) => {
+      res.setHeader(key, value);
+    });
+  }
+  
+  // Handle preflight requests
+  if (req.method === 'OPTIONS') {
+    res.setHeader('Access-Control-Allow-Headers', 'Content-Type, Authorization');
+    return res.sendStatus(200);
+  }
+  
+  next();
+});
 
 // Middleware to log requests
 app.use((req, res, next) => {

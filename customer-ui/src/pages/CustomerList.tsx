@@ -1,4 +1,4 @@
-import { useMemo, useState, useEffect } from "react";
+import { useMemo, useState, useEffect, useCallback } from "react";
 import { getAPI } from "../api/getAPI";
 import Table from "../components/atoms/table/Table";
 import Pagination from "../components/atoms/pagination/Pagination";
@@ -24,20 +24,52 @@ const customerColumnLabels: Partial<Record<keyof CustomerRow, string>> = {
 const recordsPerPage = 10;
 
 function CustomerList() {
-  const { data, isLoading, error } = useApi(getAPI);
   const [currentPage, setCurrentPage] = useState(1);
-  const [mobileItemsToShow, setMobileItemsToShow] = useState(recordsPerPage);
   const [isMobile, setIsMobile] = useState(false);
-  const customerData = data ?? [];
+  const [totalCustomers, setTotalCustomers] = useState(0);
+  const [accumulatedData, setAccumulatedData] = useState<CustomerRow[]>([]);
+  const [isLoadingMore, setIsLoadingMore] = useState(false);
 
-  const totalPages = Math.ceil(customerData.length / recordsPerPage);
+  // Create a memoized fetcher function that depends on currentPage
+  const fetcher = useCallback(
+    () => getAPI((currentPage - 1) * recordsPerPage, recordsPerPage),
+    [currentPage],
+  );
+  const { data, isLoading, error } = useApi(fetcher, [currentPage]);
+
+  const customerData = data?.customers ?? [];
+
+  // Update total customers when data changes
+  useEffect(() => {
+    if (data?.totalCustomers) {
+      setTotalCustomers(data.totalCustomers);
+    }
+  }, [data]);
+
+  // Accumulate data for mobile infinite scroll
+  useEffect(() => {
+    if (isMobile && customerData.length > 0) {
+      setAccumulatedData((prev) => {
+        // Only add new customers (avoid duplicates)
+        const existingIds = new Set(prev.map((c) => c.customerId));
+        const newCustomers = customerData.filter(
+          (c) => !existingIds.has(c.customerId),
+        );
+        return [...prev, ...newCustomers];
+      });
+      setIsLoadingMore(false);
+    } else if (!isMobile) {
+      // For desktop, use current page data directly
+      setAccumulatedData(customerData);
+    }
+  }, [customerData, isMobile]);
 
   // Detect if on mobile
   useEffect(() => {
     const checkMobile = () => {
       setIsMobile(window.innerWidth <= 767);
     };
-    
+
     checkMobile();
     window.addEventListener("resize", checkMobile);
     return () => window.removeEventListener("resize", checkMobile);
@@ -50,36 +82,36 @@ function CustomerList() {
     const handleScroll = () => {
       const scrollPosition = window.innerHeight + window.scrollY;
       const threshold = document.documentElement.scrollHeight - 200;
-      
-      if (scrollPosition >= threshold && mobileItemsToShow < customerData.length) {
-        setMobileItemsToShow((prev) => Math.min(prev + recordsPerPage, customerData.length));
+      const totalPages = Math.ceil(totalCustomers / recordsPerPage);
+
+      if (
+        scrollPosition >= threshold &&
+        !isLoadingMore &&
+        currentPage < totalPages
+      ) {
+        setIsLoadingMore(true);
+        setCurrentPage((prev) => prev + 1);
       }
     };
 
     window.addEventListener("scroll", handleScroll);
     return () => window.removeEventListener("scroll", handleScroll);
-  }, [isMobile, mobileItemsToShow, customerData.length]);
-
-  // Reset mobile items when switching views
-  useEffect(() => {
-    if (!isMobile) {
-      setMobileItemsToShow(recordsPerPage);
-    }
-  }, [isMobile]);
+  }, [isMobile, isLoadingMore, currentPage, totalCustomers]);
 
   const displayData = useMemo(() => {
     if (isMobile) {
-      return customerData.slice(0, mobileItemsToShow);
+      return accumulatedData;
     } else {
-      const startIndex = (currentPage - 1) * recordsPerPage;
-      return customerData.slice(startIndex, startIndex + recordsPerPage);
+      return customerData;
     }
-  }, [isMobile, mobileItemsToShow, currentPage, customerData]);
+  }, [isMobile, accumulatedData, customerData]);
+
+  const totalPages = Math.ceil(totalCustomers / recordsPerPage);
 
   return (
     <Layout title="Customer data explorer">
       <div className="table-section">
-        {isLoading ? (
+        {isLoading && currentPage === 1 ? (
           <p>Loading customers...</p>
         ) : error ? (
           <p>{error}</p>
@@ -99,8 +131,8 @@ function CustomerList() {
                 onPageChange={setCurrentPage}
               />
             )}
-            {isMobile && mobileItemsToShow < customerData.length && (
-              <p className="loading-more">Loading more...</p>
+            {isMobile && isLoadingMore && (
+              <p className="loading-indicator">Loading more records...</p>
             )}
           </>
         )}
