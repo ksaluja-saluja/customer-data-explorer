@@ -12,33 +12,21 @@ function useApi<T>(fetcher: (...args: any[]) => Promise<T>, dependencies: any[] 
   const [error, setError] = useState<string | null>(null);
 
   useEffect(() => {
-    let isMounted = true;
-
     const load = async () => {
       setIsLoading(true);
       setError(null);
 
       try {
         const response = await fetcher();
-        if (isMounted) {
-          setData(response);
-        }
+        setData(response);
       } catch {
-        if (isMounted) {
-          setError("Failed to load data");
-        }
+        setError("Failed to load data");
       } finally {
-        if (isMounted) {
-          setIsLoading(false);
-        }
+        setIsLoading(false);
       }
     };
 
     load();
-
-    return () => {
-      isMounted = false;
-    };
   }, [fetcher, ...dependencies]);
 
   return {
