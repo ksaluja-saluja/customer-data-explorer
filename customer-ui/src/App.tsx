@@ -1,11 +1,8 @@
-import "./App.css";
+import "./App.scss";
+import CustomerList from "./pages/CustomerList";
 
 function App() {
-  return (
-    <>
-      <h2>Customer data explorer</h2>
-    </>
-  );
+  return <CustomerList />;
 }
 
 export default App;
