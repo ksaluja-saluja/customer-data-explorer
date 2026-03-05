@@ -6,6 +6,7 @@ type UseApiResult<T> = {
   error: string | null;
 };
 
+//TODO: can use a more robust data fetching library like Axios or React Query (Tanstack Query) for better caching and error handling
 function useGetApi<T>(fetcher: (...args: any[]) => Promise<T>, dependencies: any[] = []): UseApiResult<T> {
   const [data, setData] = useState<T | null>(null);
   const [isLoading, setIsLoading] = useState(true);
