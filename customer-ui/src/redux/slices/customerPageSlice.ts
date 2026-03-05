@@ -3,6 +3,7 @@ import type { PayloadAction } from '@reduxjs/toolkit';
 import { getCustomerPageAPI } from '../../api/CustomerPageAPI';
 import type { CustomerPageResponse } from '../../api/CustomerPageAPI';
 
+//TODO: Consider using a more robust state management using Tanstack Query for better caching and server state management, especially as the app grows in complexity
 interface CustomerPageState {
   pages: Record<string, CustomerPageResponse>;
   loading: boolean;

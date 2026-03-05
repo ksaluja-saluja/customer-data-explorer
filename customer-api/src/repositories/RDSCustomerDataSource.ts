@@ -14,11 +14,15 @@ export class RDSCustomerDataSource implements CustomerDataSource {
   private database: string;
   private cachedTotal: number | null = null;
   private cachedTime: number | null = null;
+
+  //TODO: Consider using a more robust caching strategy
   private CACHE_TTL_MS = 2 * 60 * 1000; // 2 minutes
 
   constructor() {
     this.rdsClient = new RDSDataClient({});
     this.resourceArn = process.env.DB_RESOURCE_ARN || "";
+    
+    //TODO: Consider using AWS Secrets Manager for better security
     this.secretArn = process.env.DB_SECRET_ARN || "";
     this.database = process.env.DB_NAME || "";
   }
