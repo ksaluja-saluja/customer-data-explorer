@@ -1,4 +1,8 @@
 import { APIGatewayProxyEvent, Context } from "aws-lambda";
+/** 
+ * TODO: consider using a framework like NestJS to get better structure and organization of code,
+ * as well as built-in support for things like validation, dependency injection, etc.
+ * */
 import { ResponseUtil } from "./utilities/response";
 import { CustomerService } from "./services/CustomerService";
 import { CustomerDataSource } from "./models/CustomerDataSource";
@@ -18,6 +22,11 @@ const createDataSource = (): CustomerDataSource => {
   Logger.info(`Creating data source of type: ${dataSourceType}`);
   
   if (dataSourceType === "mock") {
+    /**
+     * TODO: consider implementing a more robust mock data source
+     * e.g. running lambda inside docker container that has RDS image with pre-populated data,
+     * or using a library like `mock-knex` to mock out database interactions.
+     */
     return new MockCustomerDataSource();
   }
   
@@ -36,6 +45,12 @@ export const getCustomerService = (): CustomerService => {
   return customerService;
 };
 
+/**
+ * TODO: design decision - should be lambda or ECS task
+ * as this will likely be a long-running process if we have a large number of customers.
+ * For now, we will implement as a lambda for simplicity,
+ * but may need to revisit this decision as we scale.
+ */
 export const handler = async (
   event: APIGatewayProxyEvent,
   context: Context,
@@ -44,6 +59,7 @@ export const handler = async (
   try {
     const queryParams = event.queryStringParameters || {};
 
+    //TODO: consider using a framework like NestJS to get validation and parsing of query parameters out of the box
     if (!queryParams.start || !queryParams.max) {
       Logger.error("Missing required query parameters 'start' and 'max'");
       return ResponseUtil.BadRequest("Missing required query parameters 'start' and 'max'.");
