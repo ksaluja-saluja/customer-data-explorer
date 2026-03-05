@@ -42,6 +42,13 @@ function CustomerList() {
     dispatch(getCustomerPage({ start, max: recordsPerPage }));
   }, [currentPage, dispatch]);
 
+  // Throw error to trigger ErrorBoundary when fetch fails
+  useEffect(() => {
+    if (error) {
+      throw new Error(`Failed to load customer data: ${error}`);
+    }
+  }, [error]);
+
   // Get current page data from Redux store
   const cacheKey = `${(currentPage - 1) * recordsPerPage}-${recordsPerPage}`;
   const customerPageData = pages[cacheKey];
@@ -123,8 +130,6 @@ function CustomerList() {
       <div className="c-table-section">
         {loading && currentPage === 1 ? (
           <p>Loading customers...</p>
-        ) : error ? (
-          <p>{error}</p>
         ) : (
           <>
             <Table
