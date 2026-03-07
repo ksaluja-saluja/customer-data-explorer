@@ -26,6 +26,7 @@ export class CustomerApiStack extends cdk.Stack {
     });
 
     // Create API Gateway
+    // TODO: consider lambda authorizer for better security.
     const api = new apigateway.RestApi(this, 'CustomerApi', {
       restApiName: 'Customer API Service',
       description: 'API Gateway for Customer Data Explorer',
@@ -77,6 +78,98 @@ export class CustomerApiStack extends cdk.Stack {
       value: customerLambda.functionArn,
       description: 'Customer Lambda Function ARN',
       exportName: 'CustomerLambdaArn',
+    });
+
+    // Export Swagger/OpenAPI spec
+    new cdk.CfnOutput(this, 'SwaggerSpecUrl', {
+      value: `${api.url}swagger.json`,
+      description: 'Swagger/OpenAPI specification URL',
+      exportName: 'CustomerApiSwaggerSpec',
+    });
+
+    // Export Swagger spec as JSON
+    const swaggerSpec = {
+      openapi: '3.0.0',
+      info: {
+        title: 'Customer API',
+        description: 'API for Customer Data Explorer',
+        version: '1.0.0',
+      },
+      servers: [
+        {
+          url: api.url,
+          description: 'Production API',
+        },
+      ],
+      paths: {
+        '/customers': {
+          get: {
+            summary: 'List customers',
+            description: 'Retrieve a paginated list of customers',
+            parameters: [
+              {
+                name: 'start',
+                in: 'query',
+                required: true,
+                schema: {
+                  type: 'integer',
+                  default: 0,
+                },
+                description: 'Starting index for pagination',
+              },
+              {
+                name: 'max',
+                in: 'query',
+                required: true,
+                schema: {
+                  type: 'integer',
+                  default: 10,
+                },
+                description: 'Maximum number of customers to return',
+              },
+            ],
+            responses: {
+              200: {
+                description: 'Successful response with customer list',
+                content: {
+                  'application/json': {
+                    schema: {
+                      type: 'object',
+                      properties: {
+                        customers: {
+                          type: 'array',
+                          items: {
+                            type: 'object',
+                            properties: {
+                              customerId: { type: 'string' },
+                              firstName: { type: 'string' },
+                              lastName: { type: 'string' },
+                              email: { type: 'string' },
+                            },
+                          },
+                        },
+                        totalCustomers: { type: 'integer' },
+                      },
+                    },
+                  },
+                },
+              },
+              400: {
+                description: 'Bad request - invalid parameters',
+              },
+              500: {
+                description: 'Internal server error',
+              },
+            },
+          },
+        },
+      },
+    };
+
+    new cdk.CfnOutput(this, 'SwaggerSpecJson', {
+      value: JSON.stringify(swaggerSpec),
+      description: 'Swagger/OpenAPI specification JSON',
+      exportName: 'CustomerApiSwaggerSpecJson',
     });
   }
 }
