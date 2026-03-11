@@ -26,7 +26,7 @@
     "@types/aws-lambda": "^8.10.161",
     "@types/express": "^5.0.6",
     "@types/jest": "^30.0.0",
-    "@types/node": "^25.3.3",
+    "@types/node": "^25.4.0",
     "@types/source-map-support": "^0.5.10",
     "aws-cdk": "^2.1108.0",
     "aws-cdk-lib": "^2.241.0",

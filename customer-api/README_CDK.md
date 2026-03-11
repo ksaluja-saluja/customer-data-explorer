@@ -1,7 +1,11 @@
 # Customer API - AWS CDK Setup
 
 ## Overview
-This project uses AWS CDK to define and deploy a Lambda function with API Gateway for the Customer API.
+This project uses AWS CDK to define and deploy:
+- API Gateway for the Customer API
+- Lambda function for request handling
+- Private VPC networking
+- Amazon RDS PostgreSQL database in private isolated subnets
 
 ## Prerequisites
 - Node.js and npm
@@ -96,9 +100,19 @@ You can add environment variables to the Lambda function in [lib/customer-api-st
 environment: {
   NODE_ENV: 'production',
   LOG_LEVEL: 'info',
+  DB_HOST: '...',
+  DB_PORT: '5432',
+  DB_NAME: 'customerdb',
+  DB_SECRET_ARN: 'arn:aws:secretsmanager:...',
   // Add your custom variables here
 },
 ```
+
+## Networking and Database
+- Lambda runs inside the stack VPC (private isolated subnets).
+- RDS PostgreSQL runs in private isolated subnets (not publicly accessible).
+- Security groups allow Lambda to connect to RDS on port `5432`.
+- RDS credentials are generated in AWS Secrets Manager and read access is granted to the Lambda role.
 
 ## Troubleshooting
 
