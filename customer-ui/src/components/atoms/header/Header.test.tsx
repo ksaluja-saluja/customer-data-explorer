@@ -1,50 +1,50 @@
-import { describe, it, expect } from 'vitest';
-import { render, screen } from '@testing-library/react';
-import Header from './Header';
+import { describe, it, expect } from "vitest";
+import { render, screen } from "@testing-library/react";
+import Header from "./Header";
 
-describe('Header Component', () => {
-  it('should render the header element', () => {
+describe("Header Component", () => {
+  it("should render the header element", () => {
     render(<Header title="Test Title" />);
-    const headerElement = screen.getByRole('banner');
+    const headerElement = screen.getByRole("banner");
     expect(headerElement).toBeTruthy();
   });
 
-  it('should have the correct CSS class name', () => {
+  it("should have the correct CSS class name", () => {
     render(<Header title="Test Title" />);
-    const headerElement = screen.getByRole('banner');
-    expect(headerElement.className).toBe('app-header');
+    const headerElement = screen.getByRole("banner");
+    expect(headerElement.className).toBe("c-app-header");
   });
 
-  it('should display the provided title', () => {
-    const testTitle = 'Customer Data Explorer';
+  it("should display the provided title", () => {
+    const testTitle = "Customer Data Explorer";
     render(<Header title={testTitle} />);
     const titleElement = screen.getByText(testTitle);
     expect(titleElement).toBeTruthy();
   });
 
-  it('should render the header title as an h1', () => {
-    const testTitle = 'My App Title';
+  it("should render the header title as an h1", () => {
+    const testTitle = "My App Title";
     render(<Header title={testTitle} />);
-    const h1Element = screen.getByRole('heading', { level: 1 });
+    const h1Element = screen.getByRole("heading", { level: 1 });
     expect(h1Element.textContent).toBe(testTitle);
   });
 
-  it('should contain the React logo image', () => {
+  it("should contain the React logo image", () => {
     render(<Header title="Test Title" />);
-    const logoImage = screen.getByAltText('React logo');
+    const logoImage = screen.getByAltText("React logo");
     expect(logoImage).toBeTruthy();
-    expect(logoImage.className).toBe('app-header__logo');
+    expect(logoImage.className).toBe("c-app-header__logo");
   });
 
-  it('should render header brand container', () => {
+  it("should render header brand container", () => {
     const { container } = render(<Header title="Test Title" />);
-    const brandDiv = container.querySelector('.app-header__brand');
+    const brandDiv = container.querySelector(".c-app-header__brand");
     expect(brandDiv).toBeTruthy();
   });
 
-  it('should have header-title class on the h1', () => {
+  it("should have header-title class on the h1", () => {
     render(<Header title="Test Title" />);
-    const h1Element = screen.getByRole('heading', { level: 1 });
-    expect(h1Element.className).toBe('app-header__title');
+    const h1Element = screen.getByRole("heading", { level: 1 });
+    expect(h1Element.className).toBe("c-app-header__title");
   });
 });
