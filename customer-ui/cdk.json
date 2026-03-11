@@ -1,0 +1,3 @@
+{
+  "app": "node --loader ts-node/esm --project tsconfig.cdk.json bin/cdk-app.ts"
+}
