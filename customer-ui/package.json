@@ -17,7 +17,11 @@
     "preview": "vite preview",
     "test": "vitest",
     "test:ui": "vitest --ui",
-    "test:coverage": "vitest --coverage"
+    "test:coverage": "vitest --coverage",
+    "cdk": "cdk",
+    "cdk:synth": "cdk synth",
+    "cdk:deploy": "npm run build && cdk deploy --require-approval never",
+    "cdk:destroy": "cdk destroy"
   },
   "dependencies": {
     "@reduxjs/toolkit": "^2.11.2",
@@ -26,7 +30,10 @@
     "react-redux": "^9.2.0"
   },
   "devDependencies": {
+    "aws-cdk": "^2.1108.0",
+    "aws-cdk-lib": "^2.241.0",
     "@eslint/js": "^9.39.1",
+      "constructs": "^10.5.1",
     "@testing-library/jest-dom": "^6.9.1",
     "@testing-library/react": "^16.3.2",
     "@testing-library/user-event": "^14.6.1",
@@ -42,6 +49,7 @@
     "sass": "1.70.0",
     "typescript": "~5.9.3",
     "typescript-eslint": "^8.48.0",
+    "ts-node": "^10.9.2",
     "vite": "^7.3.1",
     "vitest": "^4.0.18"
   }

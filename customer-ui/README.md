@@ -71,3 +71,27 @@ export default defineConfig([
   },
 ])
 ```
+
+## Deploy to S3 with CDK
+
+This UI includes CDK infrastructure to deploy the built `dist/` static site to an S3 static website bucket.
+
+### Local deploy
+
+```bash
+npm run cdk:synth
+npm run cdk:deploy
+```
+
+### GitHub Actions deploy
+
+Workflow: `.github/workflows/deploy-customer-ui.yml`
+
+Manual input supports:
+- `Dev`
+- `Staging`
+- `Production`
+
+Create GitHub Environments with exactly these names and configure:
+- Secret: `AWS_ROLE_TO_ASSUME`
+- Variable: `AWS_REGION` (optional, defaults to `us-east-1`)

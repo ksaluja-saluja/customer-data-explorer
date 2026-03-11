@@ -8,7 +8,7 @@ describe("Pagination Component", () => {
     const { container } = render(
       <Pagination currentPage={1} totalPages={1} onPageChange={() => {}} />,
     );
-    const nav = container.querySelector(".pagination");
+    const nav = container.querySelector(".c-pagination");
     expect(nav).toBeFalsy();
   });
 
@@ -16,7 +16,7 @@ describe("Pagination Component", () => {
     const { container } = render(
       <Pagination currentPage={1} totalPages={3} onPageChange={() => {}} />,
     );
-    const nav = container.querySelector(".pagination");
+    const nav = container.querySelector(".c-pagination");
     expect(nav).toBeTruthy();
   });
 
@@ -24,7 +24,7 @@ describe("Pagination Component", () => {
     const { container } = render(
       <Pagination currentPage={1} totalPages={3} onPageChange={() => {}} />,
     );
-    const nav = container.querySelector(".pagination");
+    const nav = container.querySelector(".c-pagination");
     expect(nav?.getAttribute("aria-label")).toBe("Table pagination");
   });
 

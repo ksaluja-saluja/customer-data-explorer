@@ -1,0 +1,59 @@
+name: Deploy Customer UI
+
+on:
+  workflow_dispatch:
+    inputs:
+      env:
+        description: Deployment environment
+        required: true
+        type: choice
+        options:
+          - Dev
+          - Staging
+          - Production
+
+permissions:
+  contents: read
+  id-token: write
+
+jobs:
+  deploy:
+    name: Deploy customer-ui (${{ inputs.env }})
+    runs-on: ubuntu-latest
+    environment: ${{ inputs.env }}
+    defaults:
+      run:
+        working-directory: customer-ui
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+          cache: npm
+          cache-dependency-path: customer-ui/package-lock.json
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Build static site
+        run: npm run build
+
+      - name: Configure AWS credentials
+        uses: aws-actions/configure-aws-credentials@v4
+        with:
+          role-to-assume: ${{ secrets.AWS_ROLE_TO_ASSUME }}
+          aws-region: ${{ vars.AWS_REGION || 'us-east-1' }}
+
+      - name: Synthesize CDK
+        env:
+          DEPLOY_ENV: ${{ inputs.env }}
+        run: npm run cdk:synth
+
+      - name: Deploy CDK stack
+        env:
+          DEPLOY_ENV: ${{ inputs.env }}
+        run: npx cdk deploy --require-approval never

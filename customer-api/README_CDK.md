@@ -1,7 +1,11 @@
 # Customer API - AWS CDK Setup
 
 ## Overview
-This project uses AWS CDK to define and deploy a Lambda function with API Gateway for the Customer API.
+This project uses AWS CDK to define and deploy:
+- API Gateway for the Customer API
+- Lambda function for request handling
+- Private VPC networking
+- Amazon RDS PostgreSQL database in private isolated subnets
 
 ## Prerequisites
 - Node.js and npm
@@ -89,6 +93,30 @@ npm run cdk:deploy  # Deploy to AWS
 
 After deployment, the API Gateway URL will be displayed in the output.
 
+## GitHub Actions Deployment
+Workflow file: `.github/workflows/deploy-customer-api.yml`
+
+This workflow supports manual deployment with an `env` input:
+- `Dev`
+- `Staging`
+- `Production`
+
+### Required GitHub Environments
+Create GitHub Environments named exactly:
+- `Dev`
+- `Staging`
+- `Production`
+
+For each environment, configure:
+- Secret: `AWS_ROLE_TO_ASSUME` (IAM role ARN for OIDC deployment)
+- Variable: `AWS_REGION` (optional, defaults to `us-east-1`)
+
+### Triggering deployment
+1. Go to **Actions** → **Deploy Customer API**
+2. Click **Run workflow**
+3. Select `env`
+4. Run
+
 ## Environment Variables
 You can add environment variables to the Lambda function in [lib/customer-api-stack.ts](lib/customer-api-stack.ts):
 
@@ -96,9 +124,19 @@ You can add environment variables to the Lambda function in [lib/customer-api-st
 environment: {
   NODE_ENV: 'production',
   LOG_LEVEL: 'info',
+  DB_HOST: '...',
+  DB_PORT: '5432',
+  DB_NAME: 'customerdb',
+  DB_SECRET_ARN: 'arn:aws:secretsmanager:...',
   // Add your custom variables here
 },
 ```
+
+## Networking and Database
+- Lambda runs inside the stack VPC (private isolated subnets).
+- RDS PostgreSQL runs in private isolated subnets (not publicly accessible).
+- Security groups allow Lambda to connect to RDS on port `5432`.
+- RDS credentials are generated in AWS Secrets Manager and read access is granted to the Lambda role.
 
 ## Troubleshooting
 

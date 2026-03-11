@@ -3,7 +3,6 @@ import * as lambda from 'aws-cdk-lib/aws-lambda';
 import * as apigateway from 'aws-cdk-lib/aws-apigateway';
 import * as logs from 'aws-cdk-lib/aws-logs';
 import { Construct } from 'constructs';
-import * as path from 'path';
 
 export class CustomerApiStack extends cdk.Stack {
   constructor(scope: Construct, id: string, props?: cdk.StackProps) {
@@ -13,7 +12,7 @@ export class CustomerApiStack extends cdk.Stack {
     const customerLambda = new lambda.Function(this, 'CustomerApiFunction', {
       runtime: lambda.Runtime.NODEJS_20_X,
       handler: 'main.handler',
-      code: lambda.Code.fromAsset(path.join(__dirname, '../src')),
+      code: lambda.Code.fromAsset('src'),
       functionName: 'customer-api-handler',
       timeout: cdk.Duration.seconds(30),
       memorySize: 512,
