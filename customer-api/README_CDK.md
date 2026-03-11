@@ -93,6 +93,30 @@ npm run cdk:deploy  # Deploy to AWS
 
 After deployment, the API Gateway URL will be displayed in the output.
 
+## GitHub Actions Deployment
+Workflow file: `.github/workflows/deploy-customer-api.yml`
+
+This workflow supports manual deployment with an `env` input:
+- `Dev`
+- `Staging`
+- `Production`
+
+### Required GitHub Environments
+Create GitHub Environments named exactly:
+- `Dev`
+- `Staging`
+- `Production`
+
+For each environment, configure:
+- Secret: `AWS_ROLE_TO_ASSUME` (IAM role ARN for OIDC deployment)
+- Variable: `AWS_REGION` (optional, defaults to `us-east-1`)
+
+### Triggering deployment
+1. Go to **Actions** → **Deploy Customer API**
+2. Click **Run workflow**
+3. Select `env`
+4. Run
+
 ## Environment Variables
 You can add environment variables to the Lambda function in [lib/customer-api-stack.ts](lib/customer-api-stack.ts):
 
